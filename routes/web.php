@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CryptocurrencyController;
+
+use App\Http\Controllers\CryptocurrencyChartController;
 use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,7 @@ Route::get('/', function () {
 });
 Route::resource('cryptocurrencies', CryptocurrencyController::class);
 
+Route::get('chartjs', [CryptocurrencyChartController::class, 'index']);
 Route::resource('users', UserController::class);
 Auth::routes();
 
