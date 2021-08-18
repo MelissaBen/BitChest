@@ -18,7 +18,6 @@ class CreateCryptocurrenciesTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->float('price');
-            $table->date('date');
             $table->timestamps();
         });
     }

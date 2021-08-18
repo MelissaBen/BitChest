@@ -19,7 +19,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 1, 
                 'name' => 'Bitcoin', 
                 'price' => 200.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -28,7 +27,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 2, 
                 'name' => 'Ethereum', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -37,7 +35,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 3, 
                 'name' => 'Ripple', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -46,7 +43,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 4, 
                 'name' => 'Bitcoin Cash', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -55,7 +51,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 5, 
                 'name' => 'Cardano', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -64,7 +59,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 6, 
                 'name' => 'Litecoin', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -73,7 +67,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 7, 
                 'name' => 'NEM', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -82,7 +75,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 8, 
                 'name' => 'Stellar', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -91,7 +83,6 @@ class CreateCryptocurrenciesSeeder extends Seeder
                 'id' => 9, 
                 'name' => 'IOTA', 
                 'price' => 5860.85, 
-                'date' => '2005-08-08', 
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
@@ -99,8 +90,7 @@ class CreateCryptocurrenciesSeeder extends Seeder
             [
                 'id' => 10, 
                 'name' => 'Dash', 
-                'price' => 5860.85, 
-                'date' => '2005-08-08', 
+                'price' => 5860.85,  
                 'image' => 'test',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')],

@@ -12,12 +12,20 @@
                 <th>Valeur courante</th>
             </thead>
             <tbody>
-            @foreach($cryptocurrencies as $crypto)
+            @foreach($cryptocurrencies as $cryptocurrency)
                 <tr>
-                    <td>{{$crypto->id}}</td>
-                    <td>{{$crypto->image}}</td>
-                    <td>{{$crypto->name}}</td>
-                <td>{{$crypto->price}}</td>
+                    <td>{{$cryptocurrency->id}}</td>
+                    <td>{{$cryptocurrency->image}}</td>
+                    <td>{{$cryptocurrency->name}}</td>
+                    <td>{{$cryptocurrency->price}}</td>
+                    <td><a href="/cryptocurrencies/{{$cryptocurrency->id}}/edit" class="btn btn-primary">Modifier</a></td>
+                    <td> 
+                        <form action="/cryptocurrencies/{{$cryptocurrency->id}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="admin-delete dropdown-item" onclick='return confirm("Êtes-vous sûr de vouloir supprimer {{$cryptocurrency->name}} ?")'><i class="fas fa-trash-alt"></i>Supprimer</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

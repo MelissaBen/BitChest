@@ -25,7 +25,8 @@ class CryptocurrencyController extends Controller
      */
     public function create()
     {
-        //
+    
+        return view('cryptocurrencies.create');
     }
 
     /**
@@ -36,7 +37,11 @@ class CryptocurrencyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $crypto = new Cryptocurrency();
+     
+        $this->saveCryptocurrency($crypto, $request);
+        $crypto->save();
+        return redirect('/cryptocurrencies');
     }
 
     /**
@@ -58,7 +63,7 @@ class CryptocurrencyController extends Controller
      */
     public function edit(Cryptocurrency $cryptocurrency)
     {
-        //
+        return view('cryptocurrencies.edit')->with('cryptocurrency', $cryptocurrency);
     }
 
     /**
@@ -68,9 +73,12 @@ class CryptocurrencyController extends Controller
      * @param  \App\Models\Cryptocurrency  $cryptocurrency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cryptocurrency $cryptocurrency)
+    public function update(Request $request, $id)
     {
-        //
+        $crypto = Cryptocurrency::find($id);
+        $this->saveCryptocurrency($crypto,$request);
+        $crypto->update();
+        return redirect('/cryptocurrencies');
     }
 
     /**
@@ -79,8 +87,16 @@ class CryptocurrencyController extends Controller
      * @param  \App\Models\Cryptocurrency  $cryptocurrency
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cryptocurrency $cryptocurrency)
+    public function destroy($id)
     {
-        //
+        $crypto = Cryptocurrency::find($id);
+        $crypto->delete();
+        return redirect('/cryptocurrencies');
+    }
+    public function saveCryptocurrency($crypto, $request){
+        $crypto->name = $request->name;
+        $crypto->image = $request->image;
+        $crypto->price = $request->price;
+      
     }
 }
