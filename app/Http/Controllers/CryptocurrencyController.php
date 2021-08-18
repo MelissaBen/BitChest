@@ -14,7 +14,8 @@ class CryptocurrencyController extends Controller
      */
     public function index()
     {
-        return view('cryptocurrencies.index');
+        $cryptocurrencies = Cryptocurrency::all();
+        return view('cryptocurrencies.index')->with('cryptocurrencies', $cryptocurrencies);
     }
 
     /**

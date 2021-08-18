@@ -14,7 +14,7 @@ class WalletController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

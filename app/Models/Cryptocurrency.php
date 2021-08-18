@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cryptocurrency extends Model
 {
     use HasFactory;
+    public function cryptocurrency(){
+        return $this->belongsTo(Cryptocurrency::class, 'cryptocurrency_id');
+    }
 }

@@ -15,9 +15,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    if(auth()->user()){
-        auth()->user()->assignRole('user');
-    }
+ 
     return view('welcome');
 });
 Route::resource('cryptocurrencies', CryptocurrencyController::class);

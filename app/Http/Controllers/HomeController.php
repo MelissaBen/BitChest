@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cryptocurrency;
+
+use App\Models\Wallet;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $cryptocurrencies = Cryptocurrency::all();
-        return view('home')->with('cryptocurrencies', $cryptocurrencies);
+        $wallet = Wallet::where('id_user',2)->get();
+        return view('home')->with('cryptocurrencies', $cryptocurrencies)->with('wallet', $wallet);
     }
+    
 }
