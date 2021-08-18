@@ -2,6 +2,6 @@
 
 @section('content')
         <section class="p-3">
-            Liste des cryptomonnaies
+            Liste des utilisateurs
         </section>
 @endsection

@@ -75,8 +75,30 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main>
+            
+            @role('admin')
+                <div style="display:flex;">
+                    <ul class="nav flex-column" style="width:250px;position:fixed;height:100%;background:red;">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Roles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users">Utilisateurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cryptocurrencies">Cryptomonnaies</a>
+                        </li>
+                    
+                    </ul>
+                
+                </div>
+
+            @else
+            @endrole
+            <div style="margin-left:250px;">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
