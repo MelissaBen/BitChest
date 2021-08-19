@@ -99,4 +99,5 @@ class CryptocurrencyController extends Controller
         $crypto->price = $request->price;
       
     }
+    
 }
