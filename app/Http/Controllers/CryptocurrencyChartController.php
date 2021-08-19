@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Currency;
+
+use App\Models\User;
 class CryptocurrencyChartController extends Controller
 {
     /**
@@ -17,9 +19,12 @@ class CryptocurrencyChartController extends Controller
         $year = ['2021','2016','2017'];
         $user = [];
         foreach ($year as $key => $value) {
-            $user[] = Currency::where('year',$value)->select('value')->get()->toArray();
-            
+            $user = DB::table('currencies')
+            ->select(DB::raw('price'))
+            ->pluck('price')->all();
         }
+        
+       
     	return view('chartjs')->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK));
     }
 
