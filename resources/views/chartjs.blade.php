@@ -20,8 +20,8 @@
     var barChartData = {
         labels: year,
         datasets: [{
-            label: 'Cryptomonnaie',
-            backgroundColor: "#008b8b",
+            label: 'User',
+            backgroundColor: "pink",
             data: user
         }]
     };
@@ -36,7 +36,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Cours actuel'
+                    text: 'Yearly User Joined'
                 }
             }
         });
