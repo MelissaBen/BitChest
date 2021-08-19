@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <section class="p-3">
         <p>Liste des cryptomonnaies</p>
         <table style="width:100%;">
