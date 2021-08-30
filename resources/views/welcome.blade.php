@@ -32,9 +32,5 @@
      
           <!-- script js-->
         <script src= "{{ asset('js/app.js') }}"></script>
-<<<<<<< HEAD
-        
-=======
->>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
     </body>
 </html>

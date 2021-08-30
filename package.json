@@ -19,11 +19,6 @@
         "postcss": "^8.1.14",
         "resolve-url-loader": "^3.1.2",
         "sass": "^1.32.11",
-<<<<<<< HEAD
-        "vue": "^2.6.12",
-        "vue-loader": "^15.9.8",
-        "vue-template-compiler": "^2.6.12"
-=======
         "sass-loader": "^12.1.0",
         "vue": "^2.6.12",
         "vue-axios": "^3.2.5",
@@ -33,6 +28,5 @@
     "dependencies": {
         "chart.js": "^2.9.4",
         "vue-chartjs": "^3.5.1"
->>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
     }
 }

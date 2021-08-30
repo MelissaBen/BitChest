@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
     <div class="container">
         <div class="row justify-content-center">
@@ -16,13 +15,7 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
-=======
-<script>
+   
 import { Line } from 'vue-chartjs';
 export default {
    extends: Line,
@@ -168,5 +161,4 @@ export default {
         });            
    }
 }
->>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 </script>

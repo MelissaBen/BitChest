@@ -4,15 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cryptocurrency;
-<<<<<<< HEAD
-use DB;
-use App\Models\Wallet;
-=======
 
 use DB;
 use App\Models\UserCryptocurrencyWallet;
 use Carbon\CarbonPeriod;
->>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 class HomeController extends Controller
 {
     /**
@@ -31,22 +26,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-<<<<<<< HEAD
-    {     $year = ['2021','2016','2017'];
-        $user = [];
-        foreach ($year as $key => $value) {
-            $user = DB::table('currencies')
-            ->select(DB::raw('price'))
-            ->pluck('price')->all();
-        }
-        
-       
-    	return view('chartjs')->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK));
-        $cryptocurrencies = Cryptocurrency::all();
-        $wallet = Wallet::where('id_user',2)->get();
-    }
-    
-=======
     {   
         //Get cryptocurrencies
         $today = date('Y-m-d');
@@ -92,5 +71,4 @@ class HomeController extends Controller
       
         return response()->json($array);
     }
->>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 }
