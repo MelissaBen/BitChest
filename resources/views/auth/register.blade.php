@@ -53,6 +53,18 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
+=======
+
+                        <div class="form-group row">
+                      
+                            <div class="col-md-6">
+                                <input  type="hidden" class="form-control @error('email') is-invalid @enderror" value="2" required autocomplete="email">
+                            </div>
+                        </div>
+
+
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

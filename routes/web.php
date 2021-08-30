@@ -5,6 +5,11 @@ use App\Http\Controllers\CryptocurrencyController;
 
 use App\Http\Controllers\CryptocurrencyChartController;
 use App\Http\Controllers\UserController;
+<<<<<<< HEAD
+=======
+
+use App\Http\Controllers\UserCryptocurrencyWalletController;
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +21,31 @@ use App\Http\Controllers\UserController;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
+=======
+Route::get('/test', function () {
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
  
     return view('welcome');
 });
 Route::resource('cryptocurrencies', CryptocurrencyController::class);
+<<<<<<< HEAD
 
+=======
+Route::resource('wallets', UserCryptocurrencyWalletController::class);
+
+Route::get('wallets/sell/{id}', [UserCryptocurrencyWalletController::class, 'sellWallet']);
+
+Route::get('wallets/buy/{id}', [UserCryptocurrencyWalletController::class, 'addToWallet']);
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 Route::get('chartjs', [CryptocurrencyChartController::class, 'index']);
 Route::resource('users', UserController::class);
 Auth::routes();
 
+<<<<<<< HEAD
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/jsontest', [App\Http\Controllers\HomeController::class, 'jsontest']);
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38

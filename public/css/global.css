@@ -1,0 +1,14 @@
+body{
+    background-color:#171933;
+    color:#D4DCFF;
+}
+.navbar{
+    background-color:transparent !important;
+}
+.navbar .container{
+    border-bottom: 1px solid #474b75;
+    padding-bottom:10px;
+}
+.navbar-brand img{
+    width:200px;
+}

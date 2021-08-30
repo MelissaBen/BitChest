@@ -3,11 +3,20 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+<<<<<<< HEAD
 
+=======
+ import VueAxios from 'vue-axios';
+ import axios from 'axios';
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+<<<<<<< HEAD
+=======
+Vue.use(VueAxios, axios);
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

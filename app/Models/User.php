@@ -8,10 +8,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+<<<<<<< HEAD
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
+=======
+use App\Models\UserCryptocurrencyWallet;
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable, HasRoles;
+    public function userCryptocurrencyWallets(){
+        return $this->hasMany('App\Models\UserCryptocurrencyWallet', 'id');
+    }
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +32,10 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
+<<<<<<< HEAD
+=======
+        'role_id'
+>>>>>>> a5b0eccdcf43b8767e3e05aa5f8a6b0656d62a38
     ];
 
     /**
