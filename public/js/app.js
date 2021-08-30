@@ -1888,6 +1888,7 @@ __webpack_require__.r(__webpack_exports__);
           lineTension: 0
         }]
       }, {
+        scaleFontColor: "#FFFFFF",
         responsive: true,
         maintainAspectRatio: false,
         legend: false,
@@ -1902,8 +1903,8 @@ __webpack_require__.r(__webpack_exports__);
               beginAtZero: true,
               min: 800,
               max: 1400,
-              stepSize: 100 // 1 - 2 - 3 ...
-
+              stepSize: 100,
+              fontColor: '#FFF'
             }
           }],
           xAxes: [{
@@ -1911,6 +1912,9 @@ __webpack_require__.r(__webpack_exports__);
             gridLines: {
               display: false,
               color: "#FFFFFF"
+            },
+            ticks: {
+              fontColor: '#FFF'
             }
           }]
         }

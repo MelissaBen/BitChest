@@ -49,7 +49,7 @@ export default {
                     }]
                 },
                 {
-                    
+                    scaleFontColor: "#FFFFFF",
                     responsive: true, 
                     maintainAspectRatio: false, 
                     legend:false ,  
@@ -64,7 +64,9 @@ export default {
                                 beginAtZero: true,
               	                min: 800,
               	                max: 1400,
-              	                stepSize: 100 // 1 - 2 - 3 ...
+              	                stepSize: 100,
+                                fontColor: '#FFF'
+
                             }
                         }],
                         xAxes: [{
@@ -72,6 +74,9 @@ export default {
                             gridLines: {
                                 display: false ,
                                 color: "#FFFFFF"
+                            },
+                            ticks: {
+                                fontColor: '#FFF'
                             }
                         }]
                     }
