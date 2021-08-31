@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container">
+            <div class="container"> 
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/bitchest_logo.png') }}" alt="">
                 </a>
@@ -88,6 +88,47 @@
         <main>
             
             @role('admin')
+                <nav class="hidden position-fixed d-flex flex-column justify-content-between p-3" id="sidebar">
+                    <div id="toggleNav" class="justify-content-center align-items-center">
+                        <i class="fas fa-lg fa-bars"></i>
+                    </div>
+                    <div id="navTop">
+                        <!--
+                        <a href="#">
+                            <div class="d-flex justify-content-center align-items-center flex-wrap border-bottom pb-5">
+                                <i class="fas fa-money-check-alt fa-3x" id="logoIcon"></i>
+                                <span class="ml-2" id="logotype">BitChest</span>
+                            </div>
+                        </a>-->
+                        <ul class="my-5 p-0">
+                            <a href="#">
+                                <li class="sidebar-item d-flex align-items-center mb-2">
+                                    <i class="fas fa-lg fa-user-circle"></i>
+                                    <span class="text-capitalize ml-2">Roles</span>
+                                </li>
+                            </a>
+                            <a href="users">
+                                <li class="sidebar-item d-flex align-items-center mb-2">
+                                    <i class="fas fa-lg fa-user-circle"></i>
+                                    <span class="text-capitalize ml-2">Utilisateurs</span>
+                                </li>
+                            </a>
+                            <a href="cryptocurrencies">
+                                <li class="sidebar-item d-flex align-items-center mb-2">
+                                    <i class="fab fa-lg fa-bitcoin"></i>
+                                    <span class="text-capitalize ml-2">Les cryptomonnaies</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div id="navBottom" class="d-flex justify-content-between">
+                        <div class="sidebar-item align-items-center justify-content-end flex-grow-1" id="closeNav">
+                            <i class="fas fa-lg fa-times-circle"></i>
+                            <span class="text-capitalize ml-2">Fermer</span>
+                        </div>
+                    </div>
+                </nav>
+               <!--
                 <div style="display:flex;">
                     <ul class="nav flex-column" style="width:250px;position:fixed;height:100%;background:red;">
                         <li class="nav-item">
@@ -101,8 +142,7 @@
                         </li>
                     
                     </ul>
-                
-                </div>
+                </div>-->
 
             @else
             @endrole
@@ -118,5 +158,8 @@
         </main>
     </div>
   
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js" defer></script>
+     <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
