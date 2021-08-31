@@ -2,7 +2,7 @@
 
 @section('content')
         <section class="p-3 container card my-5 text-center">
-            <h3 class="m-3">Liste des utilisateurs</h3>
+            <h2 class="m-3">Liste des utilisateurs</h2>
       
             <table style="width:100%;" class="col-12 table table-hover" >
                 <thead class="table-info">
@@ -36,7 +36,7 @@
                 </tbody>
             </table>
             <div>
-               <a class="admin-add text-danger" href="/users/create"> <i class="fas fa-plus-circle"></i> <p>Ajouter un utilisateur</p> </a>
+               <a class="admin-add text-danger" href="/users/create"> <i class="fas fa-plus-circle fa-lg"></i> <h4>Ajouter un utilisateur</h4> </a>
             </div>
            
         

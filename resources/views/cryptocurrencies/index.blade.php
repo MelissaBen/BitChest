@@ -4,7 +4,7 @@
 @section('content')
 
     <section class="container card my-5 p-3">
-        <h2 class="text-center m-2">Liste des cryptomonnaies</h2>
+        <h2 class="text-center m-3">Liste des cryptomonnaies</h2>
         <table style="width:100%;" class="col-12 table table-hover">
             <thead class="table-info">
                 <th>Id</th>

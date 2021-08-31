@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2 class="text-center m-3">Modifier {{$user->firstname}}</h2>
+        <h2 class="text-center text-white m-3">Modifier {{$user->firstname}}</h2>
     </section>
     
     <section class="container error-message">
