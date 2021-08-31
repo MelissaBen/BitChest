@@ -5,7 +5,7 @@
 
     <section class="container card my-5 p-3">
         <h2 class="text-center m-3">Liste des cryptomonnaies</h2>
-        <table style="width:100%;" class="col-12 table table-hover">
+        <table style="width:100%;" class="col-12 table table-hover table-responsive">
             <thead class="table-info">
                 <th>Id</th>
                 <th>Logo</th>

@@ -147,7 +147,7 @@
             @else
             @endrole
             @role('admin')
-                <div style="margin-left:250px;">
+                <div class="margin-content">
                     @yield('content')
                 </div>
             @else

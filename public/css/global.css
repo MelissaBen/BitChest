@@ -143,6 +143,17 @@ h2 {
     #sidebar #closeNav {
         display: flex;
     }
+
+    .margin-content {
+        margin: 0 !important ;
+    }
+
 }
 
+thead th {
+    width: 200px;
+}
 
+.margin-content {
+    margin-left:250px;
+}

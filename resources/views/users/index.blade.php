@@ -4,7 +4,7 @@
         <section class="p-3 container card my-5 text-center">
             <h2 class="m-3">Liste des utilisateurs</h2>
       
-            <table style="width:100%;" class="col-12 table table-hover" >
+            <table style="width:100%;" class="col-12 table table-hover table-responsive">
                 <thead class="table-info">
                     <th>Id</th>
                     <th>Nom</th>
