@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2>Ajouter une cryptomonnaie</h2>
+        <h2 class="text-center m-3">Ajouter une cryptomonnaie</h2>
     </section>
     
     <section class="container error-message">
@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container">
+    <div class="admin-form container card my-5 p-4 ">
         {!! Form::open(['url' => '/cryptocurrencies', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('name', "Nom") !!}
@@ -30,7 +30,7 @@
             </div>
             
      
-            {!! Form::submit('Ajouter',  ['class' => 'create-btn']) !!}
+            {!! Form::submit('Ajouter',  ['class' => 'create-btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
  

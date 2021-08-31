@@ -12,3 +12,8 @@ body{
 .navbar-brand img{
     width:200px;
 }
+
+div.form-group label {
+      color: black;
+      font-size: 17px   
+}

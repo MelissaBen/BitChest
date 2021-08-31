@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2>Ajouter un utilisateur</h2>
+        <h2 class="text-center m-3">Ajouter un utilisateur</h2>
     </section>
     
     <section class="container error-message">
@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container ">
+    <div class="admin-form container  card my-5 p-4 ">
         {!! Form::open(['url' => '/users', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('firstname', "Prénom") !!}
@@ -42,8 +42,9 @@
                     @endforeach
                 </select>
             </div>
-            {!! Form::submit('Ajouter',  ['class' => 'create-btn']) !!}
+            {!! Form::submit('Ajouter',  ['class' => 'create-btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
  
 @stop
+

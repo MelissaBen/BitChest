@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2>Modifier {{$cryptocurrency->name}}</h2>
+        <h2 class="text-center m-3">Modifier {{$cryptocurrency->name}}</h2>
     </section>
     
     <section class="container error-message">
@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container">
+    <div class="admin-form container card my-5 p-4 ">
         {!! Form::model($cryptocurrency, ['route' => ['cryptocurrencies.update', $cryptocurrency->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('name', "Nom") !!}
@@ -29,7 +29,7 @@
                 {!! Form::text('price', "$cryptocurrency->price", ['class' => 'form-control']) !!}
             </div>
         
-            {!! Form::submit('Ajouter',  ['class' => 'edit-btn']) !!}
+            {!! Form::submit('Ajouter',  ['class' => 'edit-btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
  

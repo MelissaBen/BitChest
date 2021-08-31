@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2>Modifier {{$user->firstname}}</h2>
+        <h2 class="text-center m-3">Modifier {{$user->firstname}}</h2>
     </section>
     
     <section class="container error-message">
@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container">
+    <div class="admin-form container card my-5 p-4">
         {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('firstname', "Prénom") !!}
@@ -42,7 +42,7 @@
                     @endforeach
                 </select>
             </div>
-            {!! Form::submit('Ajouter',  ['class' => 'edit-btn']) !!}
+            {!! Form::submit('Ajouter',  ['class' => 'edit-btn  btn-primary']) !!}
         {!! Form::close() !!}
     </div>
  
