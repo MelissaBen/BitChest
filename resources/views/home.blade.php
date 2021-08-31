@@ -64,9 +64,9 @@
         <section class="row mx-4 mt-4">
             <div class="col-md-4 pl-0">
                 <div style="background:#1B1E3D;padding:20px;border-radius:5px;border:1px solid #D4DCFF50;box-shadow:0 2px 20px #616490;">
-                    <table style="width:100%;">
+                    <table style="width:100%;" class="col-12 table table-hover">
                         <caption style="caption-side:top;font-size:32px;color:#D4DCFF;padding-top:0;font-weight:bold;">Prix aujourd'hui</caption>
-                        <thead>
+                        <thead class="table-info">
                             <th>Cryptomonnaies</th>
                             <th></th>
                             <th>Valeur</th>
