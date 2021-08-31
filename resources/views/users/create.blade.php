@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container">
+    <div class="admin-form container ">
         {!! Form::open(['url' => '/users', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('firstname', "Prénom") !!}
