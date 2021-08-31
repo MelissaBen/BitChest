@@ -73,7 +73,7 @@
                         </thead>
                         <tbody>
                             @foreach($cryptoRanks as $key => $cryptoRank)
-                                <tr style="line-height:37px;">
+                                <tr style="line-height:37px;" class="bg-white">
                                     <td>
                                         <img class="mr-2" src="/images/{{$cryptoRank->image}}.png" alt="">
                                         <span class="mr-2" style="font-size:20px;">{{$key + 1}}</span>
@@ -95,8 +95,8 @@
             
             <div class="col-md-8" >
                 <div class="row">
-                    <div class="col-md-12 pr-0">
-                        <div  style="background:#1B1E3D;padding:20px;border-radius:5px;border:1px solid #D4DCFF50;box-shadow:0 2px 20px #616490;"> 
+                    <div class="col-md-12 pr-0 ">
+                        <div style="background:#1B1E3D;padding:20px;border-radius:5px;border:1px solid #D4DCFF50;box-shadow:0 2px 20px #616490;"> 
                             <p style="font-size:32px;color:#D4DCFF;padding-top:0;font-weight:bold;">Détails</p>
                             <div class=" d-flex align-items-center ">
                                 <p style="margin:0;font-size:18px;">1 bitcoin vaut : <span id="todayCrypto" style="font-size:28px;letter-spacing:1px;font-weight:bold;">{{$crypto[0]->price}}</span> € aujourd'hui</p>
