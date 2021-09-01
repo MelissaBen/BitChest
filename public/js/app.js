@@ -1834,10 +1834,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CryptoRates.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CryptoRates.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1866,17 +1866,20 @@ __webpack_require__.r(__webpack_exports__);
     this.axios.get(uri).then(function (response) {
       var data = response.data;
       valueForToday.parentNode.style.display = "inline-block";
+      console.log(yesterdayCrypto);
 
-      if (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price < 0) {
-        icon.style.color = "#e86f63";
-        icon.style.transform = "rotate(180deg) scaleX(-1)";
-        valueForToday.parentNode.style.color = "#e86f63";
-        valueForToday.textContent = data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price;
-      } else {
-        icon.style.color = "#43ca79";
-        icon.style.transform = "rotate(0deg) scaleX(1)";
-        valueForToday.parentNode.style.color = "#43ca79";
-        valueForToday.textContent = "+" + (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price);
+      if (yesterdayCrypto != null) {
+        if (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price < 0) {
+          icon.style.color = "#e86f63";
+          icon.style.transform = "rotate(180deg) scaleX(-1)";
+          valueForToday.parentNode.style.color = "#e86f63";
+          valueForToday.textContent = data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price;
+        } else {
+          icon.style.color = "#43ca79";
+          icon.style.transform = "rotate(0deg) scaleX(1)";
+          valueForToday.parentNode.style.color = "#43ca79";
+          valueForToday.textContent = "+" + (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price);
+        }
       }
 
       _this.renderChart({
@@ -1925,21 +1928,27 @@ __webpack_require__.r(__webpack_exports__);
       document.getElementById('chartSwitcher').addEventListener('change', function () {
         var cryptoIcon = document.getElementById('cryptoIcon');
         cryptoRate.textContent = this.options[this.selectedIndex].text;
-        yesterdayCrypto.textContent = data['yesterdayCrypto'][this.value - 1].price;
+
+        if (yesterdayCrypto != null) {
+          yesterdayCrypto.textContent = data['yesterdayCrypto'][this.value - 1].price;
+        }
+
         todayCrypto.textContent = data['todayCrypto'][this.value - 1].price;
         cryptoIcon.setAttribute('src', "/images/" + data['crypto'][this.value].toLowerCase() + ".png");
         console.log(cryptoIcon);
 
-        if (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0) {
-          icon.style.color = "#e86f63";
-          icon.style.transform = "rotate(180deg) scaleX(-1)";
-          valueForToday.parentNode.style.color = "#e86f63";
-          valueForToday.textContent = data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price;
-        } else {
-          icon.style.color = "#43ca79";
-          icon.style.transform = "rotate(0deg) scaleX(1)";
-          valueForToday.parentNode.style.color = "#43ca79";
-          valueForToday.textContent = "+" + (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price);
+        if (yesterdayCrypto != null) {
+          if (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0) {
+            icon.style.color = "#e86f63";
+            icon.style.transform = "rotate(180deg) scaleX(-1)";
+            valueForToday.parentNode.style.color = "#e86f63";
+            valueForToday.textContent = data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price;
+          } else {
+            icon.style.color = "#43ca79";
+            icon.style.transform = "rotate(0deg) scaleX(1)";
+            valueForToday.parentNode.style.color = "#43ca79";
+            valueForToday.textContent = "+" + (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price);
+          }
         }
 
         that.renderChart({
@@ -2009,7 +2018,7 @@ Vue.use((vue_axios__WEBPACK_IMPORTED_MODULE_0___default()), (axios__WEBPACK_IMPO
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
+Vue.component('crypto-rates', __webpack_require__(/*! ./components/CryptoRates.vue */ "./resources/js/components/CryptoRates.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -75356,10 +75365,10 @@ var reactiveProp = {
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
+/***/ "./resources/js/components/CryptoRates.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/CryptoRates.vue ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75367,7 +75376,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _CryptoRates_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CryptoRates.vue?vue&type=script&lang=js& */ "./resources/js/components/CryptoRates.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
 ;
@@ -75377,7 +75386,7 @@ var render, staticRenderFns
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__.default)(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default,
+  _CryptoRates_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default,
   render,
   staticRenderFns,
   false,
@@ -75389,15 +75398,15 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ExampleComponent.vue"
+component.options.__file = "resources/js/components/CryptoRates.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/CryptoRates.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/CryptoRates.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75405,8 +75414,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CryptoRates_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CryptoRates.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/CryptoRates.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CryptoRates_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 

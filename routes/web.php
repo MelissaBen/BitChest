@@ -33,4 +33,4 @@ Route::resource('users', UserController::class);
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/jsontest', [App\Http\Controllers\HomeController::class, 'jsontest']);
+Route::get('/jsontest', [App\Http\Controllers\HomeController::class, 'convertIntoJson']);

@@ -57,7 +57,7 @@
             </section>
         
             <section>
-                <example-component/>
+                <crypto-rates/>
             </section>
         </section>
 
@@ -102,9 +102,11 @@
                                 <p style="margin:0;font-size:18px;">1 bitcoin vaut : <span id="todayCrypto" style="font-size:28px;letter-spacing:1px;font-weight:bold;">{{$crypto[0]->price}}</span> € aujourd'hui</p>
                             </div>
                             
+                            @if(!empty($yesterdayCrypto))
                             <div class="d-flex align-items-center">
                                 <p style="margin:0;font-size:18px;">1 bitcoin valait <span id="yesterdayCrypto" style="font-size:25px;letter-spacing:1px;font-weight:bold;">{{$yesterdayCrypto[0]->price}}</span> € hier</p>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

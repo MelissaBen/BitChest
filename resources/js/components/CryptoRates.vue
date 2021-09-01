@@ -20,23 +20,24 @@ export default {
         this.axios.get(uri).then((response) => {
             let data = response.data;
      
-                    valueForToday.parentNode.style.display = "inline-block"
-                if(data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price < 0){
+                valueForToday.parentNode.style.display = "inline-block";
+                console.log(yesterdayCrypto);
+                if(yesterdayCrypto != null){
+                    if(data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price < 0){
                    
-                    icon.style.color = "#e86f63";
-                    icon.style.transform = "rotate(180deg) scaleX(-1)";
-                    valueForToday.parentNode.style.color = "#e86f63";
-                    valueForToday.textContent = data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price;
-               
-                }else{
-                    
-                    icon.style.color = "#43ca79";
-                    
-                    icon.style.transform = "rotate(0deg) scaleX(1)";
-                    valueForToday.parentNode.style.color = "#43ca79";
-
-                    valueForToday.textContent =  "+" + (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price) ;
-               
+                        icon.style.color = "#e86f63";
+                        icon.style.transform = "rotate(180deg) scaleX(-1)";
+                        valueForToday.parentNode.style.color = "#e86f63";
+                        valueForToday.textContent = data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price;
+                
+                    }else{
+                        
+                        icon.style.color = "#43ca79";
+                        icon.style.transform = "rotate(0deg) scaleX(1)";
+                        valueForToday.parentNode.style.color = "#43ca79";
+                        valueForToday.textContent =  "+" + (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price) ;
+                
+                    }
                 }
             this.renderChart(
                 {
@@ -90,11 +91,15 @@ export default {
 
         var cryptoIcon = document.getElementById('cryptoIcon');
                 cryptoRate.textContent = this.options[this.selectedIndex].text;
-                yesterdayCrypto.textContent = data['yesterdayCrypto'][this.value - 1].price;
+                if(yesterdayCrypto != null){
+                    yesterdayCrypto.textContent = data['yesterdayCrypto'][this.value - 1].price;
+                
+                }
                 todayCrypto.textContent = data['todayCrypto'][this.value - 1].price;
                 cryptoIcon.setAttribute('src', "/images/" + data['crypto'][this.value].toLowerCase() + ".png");
                 console.log(cryptoIcon)
-                if(data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0){
+                if(yesterdayCrypto != null){
+                    if(data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0){
                    
                     icon.style.color = "#e86f63";
                     icon.style.transform = "rotate(180deg) scaleX(-1)";
@@ -110,6 +115,7 @@ export default {
 
                     valueForToday.textContent =  "+" + (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price) ;
                
+                }
                 }
 
                 that.renderChart(
