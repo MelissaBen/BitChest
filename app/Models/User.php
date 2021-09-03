@@ -49,5 +49,18 @@ class User extends Authenticatable
     public function wallets(){
         return $this->hasMany('App\Models\Cryptocurrency');
     }
+
+
+
+public function isAdmin()
+{
     
+    $user = User::where('id', $this->id)->pluck('role_id');
+    if($user[0] == 1){
+        $isAdmin = true;
+    }else{
+        $isAdmin = false;
+    }
+    return $isAdmin;
+}
 }

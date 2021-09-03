@@ -18,10 +18,6 @@ use App\Http\Controllers\UserCryptocurrencyWalletController;
 |
 */
 
-Route::get('/test', function () {
- 
-    return view('welcome');
-});
 Route::resource('cryptocurrencies', CryptocurrencyController::class);
 Route::resource('wallets', UserCryptocurrencyWalletController::class);
 

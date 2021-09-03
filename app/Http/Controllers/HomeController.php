@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth']);
     }
 
     /**
@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {   
         
-
+        
         //Get cryptocurrencies
         $today = date('Y-m-d');
         $yesterday = date('Y-m-d',strtotime("-1 days"));

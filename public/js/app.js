@@ -1860,9 +1860,9 @@ __webpack_require__.r(__webpack_exports__);
     var valueForToday = document.getElementById('valueForToday');
     var icon = document.getElementById('icon');
     var gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    gradient.addColorStop(0, 'rgba(65, 184, 131, 0.5)');
-    gradient.addColorStop(0.5, 'rgba(65, 184, 131, 0.25)');
-    gradient.addColorStop(1, 'rgba(65, 184, 131, 0)');
+    gradient.addColorStop(0, 'rgba(61, 164, 118, 0.5)');
+    gradient.addColorStop(0.5, 'rgba(61, 164, 118, 0.25)');
+    gradient.addColorStop(1, 'rgba(61, 164, 118, 0)');
     this.axios.get(uri).then(function (response) {
       var data = response.data;
       valueForToday.parentNode.style.display = "inline-block";
@@ -1886,7 +1886,7 @@ __webpack_require__.r(__webpack_exports__);
         labels: data['days'],
         datasets: [{
           label: '€',
-          borderColor: "#41B883",
+          borderColor: "#3DA476",
           backgroundColor: gradient,
           data: data['mydata'][1],
           lineTension: 0
@@ -1901,24 +1901,24 @@ __webpack_require__.r(__webpack_exports__);
             display: true,
             gridLines: {
               display: true,
-              color: "#FFFFFF50"
+              color: "#31313150"
             },
             ticks: {
               beginAtZero: true,
               min: 800,
               max: 1400,
               stepSize: 100,
-              fontColor: '#FFF'
+              fontColor: '#313131'
             }
           }],
           xAxes: [{
             display: true,
             gridLines: {
               display: false,
-              color: "#FFFFFF"
+              color: "#313131"
             },
             ticks: {
-              fontColor: '#FFF'
+              fontColor: '#313131'
             }
           }]
         }
