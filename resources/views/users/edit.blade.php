@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container card my-5 p-4">
+    <div class="admin-form mr-3 ml-4 card my-5 p-4">
         {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('firstname', "Prénom") !!}

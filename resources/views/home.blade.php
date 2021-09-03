@@ -25,10 +25,15 @@
 }
 </style>
 @section('content')
-
-    
+    @role('admin')
+        <section style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;background:#FFF;padding: 20px;">
+            <h2>Cours des cryptomonnaies</h2>
+        </section>
+  
+    @endrole
+   
     <div class="container">
-        <section class="mt-5 mb-3 mx-4" style="background:#EAEAEA;padding:20px;border-radius:5px;border:1px solid #D4DCFF50;box-shadow:0 2px 20px #616490;">
+        <section class="mb-3 mx-4 card" style="padding:20px;border-radius:5px;">
             <section class="row mt-3 mb-5">
                 <div class="col-md-6 col-sm-12 col-xs-12 d-flex align-items-center">
                     <div class="d-flex justify-content-center align-items-center">
@@ -63,7 +68,7 @@
 
         <section class="row mx-4 mt-4">
             <div class="col-md-7 pl-0">
-                <div style="background:#EAEAEA;padding:20px;border-radius:5px;border:1px solid #D4DCFF50;box-shadow:0 2px 20px #616490;">
+                <div class="card" style="padding:20px;border-radius:5px;">
                     <table style="width:100%;" class="col-12 table table-hover table-responsive">
                         <caption style="caption-side:top;color:#313131;font-size:32px;padding-top:0;font-weight:bold;">Prix aujourd'hui</caption>
                         <thead class="table-info">
@@ -96,7 +101,7 @@
             <div class="col-md-5" >
                 <div class="row">
                     <div class="col-md-12 pr-0 ">
-                        <div style="background:#EAEAEA;padding:20px;border-radius:5px;border:1px solid #D4DCFF50;box-shadow:0 2px 20px #616490;"> 
+                        <div class="card" style="padding:20px;border-radius:5px;"> 
                             <p style="font-size:32px;padding-top:0;font-weight:bold;">Détails</p>
                             <div class=" d-flex align-items-center ">
                                 <p style="margin:0;font-size:18px;">1 bitcoin vaut : <span id="todayCrypto" style="font-size:28px;letter-spacing:1px;font-weight:bold;">{{$crypto[0]->price}}</span> € aujourd'hui</p>

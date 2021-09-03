@@ -13,7 +13,7 @@
         @endif 
     </section>
     
-    <div class="admin-form container card my-5 p-4 ">
+    <div class="admin-form mr-3 ml-4 card my-5 p-4 ">
         {!! Form::open(['url' => '/cryptocurrencies', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('name', "Nom") !!}

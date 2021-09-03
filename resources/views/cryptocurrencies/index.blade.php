@@ -2,17 +2,20 @@
 
 
 @section('content')
+    <section style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;background:#FFF;padding: 20px;">
+        <h2>Cryptomonnaies</h2>
+            <a class="admin-add  d-flex flex-column align-items-center justify-content-center text-center" href="/cryptocurrencies/create"> <i class="fas fa-plus-circle fa-lg"></i> <span>Ajouter une cryptomonnaie</span> </a>
+    </section>
 
-    <section class="container card my-5 p-3">
-        <h2 class="text-center m-3">Liste des cryptomonnaies</h2>
+    <section class="mr-3 ml-4 card my-3 p-3">
         <table style="width:100%;" class="col-12 table table-hover table-responsive">
             <thead class="table-info">
                 <th>Id</th>
                 <th>Logo</th>
                 <th>Nom</th>
                 <th>Valeur courante</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
+                <th></th>
+                <th>    </th>
             </thead>
             <tbody>
             @foreach($cryptocurrencies as $cryptocurrency)

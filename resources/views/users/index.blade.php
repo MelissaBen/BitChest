@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-        <section class="p-3 container card my-5 text-center">
+    <section style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;background:#FFF;padding: 20px;">
+        <h2>Utilisateurs</h2>
+        <a class="admin-add  d-flex flex-column align-items-center justify-content-center text-center" href="/users/create"> <i class="fas fa-plus-circle fa-lg"></i> <span>Ajouter un utilisateur</span> </a>
+    </section>
+
+        <section class="p-3 card  mr-3 ml-4 my-3 text-center">
             <h2 class="m-3">Liste des utilisateurs</h2>
       
             <table style="width:100%;" class="col-12 table table-hover table-responsive">
@@ -35,9 +40,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div>
-               <a class="admin-add text-danger" href="/users/create"> <i class="fas fa-plus-circle fa-lg"></i> <h4>Ajouter un utilisateur</h4> </a>
-            </div>
+           
            
         
         </section>

@@ -24,7 +24,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top w-100">
             <div class="container"> 
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('images/bitchest_logo.png') }}" alt="">
@@ -55,12 +56,14 @@
                                 </li>
                             @endif
                         @else
+                            @role('user')
                             <li class="nav-item">
-                            <a class="nav-link" href="/wallets" style="position:relative;color:#FFF;display:flex;align-items:center;margin-right:25px;">
-                                <i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i>Mes portefeuilles
-                                <span style="color:white;background:#00Aff0;width:20px;height:20px;border-radius:50%;position:absolute;bottom:0px;left:0px;font-size:12px;display:flex;justify-content:center;align-items:center;font-weight:bold;"></span>
-                            </a>
+                                <a class="nav-link" href="/wallets" style="position:relative;color:#FFF;display:flex;align-items:center;margin-right:25px;">
+                                    <i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i>Mes portefeuilles
+                                    <span style="color:white;background:#00Aff0;width:20px;height:20px;border-radius:50%;position:absolute;bottom:0px;left:0px;font-size:12px;display:flex;justify-content:center;align-items:center;font-weight:bold;"></span>
+                                </a>
                             </li>
+                            @endrole
                             <li class="nav-item dropdown" style="display:flex;align-items:center;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
@@ -84,6 +87,7 @@
                 </div>
             </div>
         </nav>
+        </header>
 
         <main>
             
@@ -100,7 +104,7 @@
                                 <span class="ml-2" id="logotype">BitChest</span>
                             </div>
                         </a>-->
-                        <ul class="my-5 p-0">
+                        <ul class="my-3 p-0">
                             <a href="#">
                                 <li class="sidebar-item d-flex align-items-center mb-2">
                                     <i class="fas fa-lg fa-user-circle"></i>
@@ -151,7 +155,7 @@
                     @yield('content')
                 </div>
             @else
-                <div>
+                <div style="margin-top:8rem;">
                     @yield('content')
                 </div>
             @endrole

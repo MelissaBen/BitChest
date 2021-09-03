@@ -1,18 +1,18 @@
 body{
     /*background-color:#171933;*/
-    background-color:#2C3063;
     color:#313131;
     font-family: 'Open sans';
 
 
 }
+main{
+    position:relative;
+    margin-top:87px;
+}
 .navbar{
-    background-color:transparent !important;
+    background-color: rgb(40,43,48) !important;
 }
-.navbar .container{
-    border-bottom: 1px solid #474b75;
-    padding-bottom:10px;
-}
+
 .navbar-brand img{
     width:200px;
 }
@@ -22,19 +22,23 @@ div.form-group label {
       font-size: 17px   
 }
 
-
+.admin-add{
+    color:#3097D1;
+}
 
 /*Sidebar*/
 
 #sidebar {
-    width: 20rem;
+    width: 300px;
     height: 100vh;
-    background: #4949ff;
-    background: linear-gradient(135deg, #4949ff 10%, rgb(67, 202, 121) 90%);
+    /*background: #4949ff;
+    background: linear-gradient(135deg, #4949ff 10%, rgb(67, 202, 121) 90%);*/
+    background:#323A46;
     font-size: 1rem;
     -webkit-box-shadow: 5px 0px 8px 0px #949494;
     -moz-box-shadow: 5px 0px 8px 0px #949494;
     box-shadow: 5px 0px 8px 0px #949494;
+ 
     left: 0;
     transition: 0.3s cubic-bezier(0.4, 0, 1, 1);
     z-index: 1;
@@ -157,5 +161,6 @@ thead th {
 }
 
 .margin-content {
-    margin-left:250px;
+    background:#F5F8FA;
+    margin-left:300px;
 }
