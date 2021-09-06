@@ -92,9 +92,10 @@
         <main>
             
             @role('admin')
-                <nav class="hidden position-fixed d-flex flex-column justify-content-between p-3" id="sidebar">
+                <nav class="hidden position-fixed d-flex flex-column justify-content-between p-3 " id="sidebar">
                     <div id="toggleNav" class="justify-content-center align-items-center">
-                        <i class="fas fa-lg fa-bars"></i>
+                        </i><i class="fas fa-lg fa-angle-double-right"></i>
+
                     </div>
                     <div id="navTop">
                         <!--

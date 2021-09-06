@@ -152,6 +152,7 @@ div.form-group label {
 
     .margin-content {
         margin: 0 !important ;
+        padding: 20px !important;
     }
 
 }

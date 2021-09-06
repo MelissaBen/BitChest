@@ -44,16 +44,21 @@
       <div class="modal-content">
 
         <form action="/wallets/buy/{{$cryptoWallet->id}}" method="get">
-                                {{csrf_field()}}
-                                <label for="updatee">Nombre de {{$cryptoWallet->name}} voulu</label>
-                                <input style="max-width:100px;width:100%;"class="form-control" name="updatee"  />
-                                <button type="submit" class="admin-delete dropdown-item" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} au cours actuel</button>
+            {{csrf_field()}}
+            <div class="form-group m-2">
+                  <label for="updatee">Nombre de {{$cryptoWallet->name}} voulu : </label>
+                  <input style="max-width:100px;width:100%;"class="form-control" name="updatee"  />
+             </div>
+            <button type="submit" class="admin-delete btn btn-outline-primary m-2" onclick='return confirm("Êtes-vous sûr de vouloir acheter {{$cryptoWallet->name}} {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} au cours actuel</button>
+                          
         </form>
         <form action="/wallets/buy/{{$cryptoWallet->id}}" method="get" class="pt-5">
-                                {{csrf_field()}}
-                                <label for="updateee">rentrer une valeur en euros</label>
-                                <input style="max-width:100px;width:100%;"class="form-control" name="updateee"  />
-                                <button type="submit" class="admin-delete dropdown-item" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} </button>
+            {{csrf_field()}}
+            <div class="form-group m-2">
+                <label for="updateee">rentrer une valeur en euros</label>
+                <input style="max-width:100px;width:100%;"class="form-control" name="updatee"  />
+            </div>
+            <button type="submit" class="admin-delete btn btn-outline-primary m-2" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} </button>
         </form>
       </div>
     </div>
