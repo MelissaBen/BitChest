@@ -10,7 +10,7 @@ main{
     margin-top:87px;
 }
 .navbar{
-    background-color: rgb(40,43,48) !important;
+    background-color: #191B27 !important;
 }
 
 .navbar-brand img{
@@ -38,7 +38,6 @@ div.form-group label {
     -webkit-box-shadow: 5px 0px 8px 0px #949494;
     -moz-box-shadow: 5px 0px 8px 0px #949494;
     box-shadow: 5px 0px 8px 0px #949494;
- 
     left: 0;
     transition: 0.3s cubic-bezier(0.4, 0, 1, 1);
     z-index: 1;
@@ -57,10 +56,10 @@ div.form-group label {
 #sidebar #toggleNav {
     display: none;
     position: absolute;
-    width: 3rem;
-    height: 3rem;
-    right: -3rem;
-    background-color: #7815ff;
+    width: 1rem;
+    height: 2rem;
+    right: -1rem;
+    background-color: #949494;
     border-radius: 0 0.5rem 0.5rem 0;
     cursor: pointer;
 }
@@ -82,10 +81,11 @@ div.form-group label {
 #sidebar .sidebar-item.active {
     background-color: #8a8afd;
     padding-left: 0.5rem;
+    
 }
 
 #sidebar .sidebar-item:not(.active):hover {
-    background-color: #7070f9;
+    background-color: #00B812;
     padding-left: 0.5rem;
 }
 
@@ -121,6 +121,9 @@ div.form-group label {
 }
 
 @media (max-width: 991px) {
+    h2 {
+        text-align: center;
+    }
     #sidebar {
         width: 12rem;
         font-size: 0.9rem;
@@ -153,6 +156,15 @@ div.form-group label {
     .margin-content {
         margin: 0 !important ;
         padding: 20px !important;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .margin-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        
     }
 
 }

@@ -94,7 +94,7 @@
             @role('admin')
                 <nav class="hidden position-fixed d-flex flex-column justify-content-between p-3 " id="sidebar">
                     <div id="toggleNav" class="justify-content-center align-items-center">
-                        </i><i class="fas fa-lg fa-angle-double-right"></i>
+                        </i><i class="fas fa-xs fa-angle-double-right"></i>
 
                     </div>
                     <div id="navTop">

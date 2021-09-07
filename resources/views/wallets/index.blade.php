@@ -12,7 +12,7 @@
   
   <div class="d-flex align-items-center justify-content-between my-3">
     <h2><i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i> Mes portefeuilles</h2>
-    <a href="/wallets/create"><i class="fas fa-plus-circle"></i>Créer un nouveau portefeuille</a>
+    <a href="/wallets/create"><i class="fas fa-plus-circle"></i> Créer un nouveau portefeuille</a>
   </div>
 
 <div class="row">
@@ -74,7 +74,7 @@
         <form action="/wallets/sell/{{$cryptoWallet->id}}" method="get">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="0" />
-                            <button type="submit" style="background:none;border:;font-size:24px;"  onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille {{$cryptoWallet->id}} ?")'>Vendre pour <span style="color:#43ca79;">{{$rate[$key][0]* $cryptoWallet->total }} €</span></button>
+                            <button type="submit" style="background:none;border:;font-size:24px;"  onclick='return confirm("Êtes-vous sûr de vendre {{$rate[$key][0]* $cryptoWallet->total }}?")'>Vendre pour <span style="color:#43ca79;">{{$rate[$key][0]* $cryptoWallet->total }} €</span></button>
         </form>
         </div>
       
