@@ -20,13 +20,10 @@
                 {!! Form::text('name', "", ['class' => 'form-control']) !!}
             </div>
 
+         
             <div class="form-group">
-                {!! Form::label('image', "image") !!}
-                {!! Form::text('image', "", ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('price', "Prix") !!}
-                {!! Form::text('price', "", ['class' => 'form-control']) !!}
+                {!! Form::label('image', "Image") !!}
+                {!! Form::file('image',  ['class' => 'form-control']) !!}
             </div>
             
      

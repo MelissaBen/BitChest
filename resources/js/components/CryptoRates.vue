@@ -5,18 +5,19 @@ import { Line } from 'vue-chartjs';
 export default {
    extends: Line,
    mounted() {
-        let uri = 'http://127.0.0.1:8000/jsontest';
+        let uri = 'http://127.0.0.1:8000/cryptocurrenciesjson';
 
         let cryptoRate = document.getElementById('cryptoRate');    
         let todayCrypto = document.getElementById('todayCrypto');
         let yesterdayCrypto = document.getElementById('yesterdayCrypto');
         let valueForToday = document.getElementById('valueForToday');
         let icon = document.getElementById('icon');
+
         let gradient =  this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-        
         gradient.addColorStop(0, 'rgba(61, 164, 118, 0.5)')
         gradient.addColorStop(0.5, 'rgba(61, 164, 118, 0.25)');
         gradient.addColorStop(1, 'rgba(61, 164, 118, 0)');
+
         this.axios.get(uri).then((response) => {
             let data = response.data;
      
@@ -97,7 +98,7 @@ export default {
                 }
                 todayCrypto.textContent = data['todayCrypto'][this.value - 1].price;
                 cryptoIcon.setAttribute('src', "/images/" + data['crypto'][this.value].toLowerCase() + ".png");
-                console.log(cryptoIcon)
+              
                 if(yesterdayCrypto != null){
                     if(data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0){
                    

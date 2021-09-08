@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Cryptocurrency;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Cryptocurrency;
 use Illuminate\Http\Request;
 
 class CryptocurrencyController extends Controller
@@ -18,7 +18,7 @@ class CryptocurrencyController extends Controller
     public function index()
     {
         $cryptocurrencies = Cryptocurrency::all();
-        return view('cryptocurrencies.index')->with('cryptocurrencies', $cryptocurrencies);
+        return view('admin.cryptocurrencies.index')->with('cryptocurrencies', $cryptocurrencies);
     }
 
     /**
@@ -29,7 +29,7 @@ class CryptocurrencyController extends Controller
     public function create()
     {
     
-        return view('cryptocurrencies.create');
+        return view('admin.cryptocurrencies.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class CryptocurrencyController extends Controller
      */
     public function edit(Cryptocurrency $cryptocurrency)
     {
-        return view('cryptocurrencies.edit')->with('cryptocurrency', $cryptocurrency);
+        return view('admin.cryptocurrencies.edit')->with('cryptocurrency', $cryptocurrency);
     }
 
     /**
@@ -98,9 +98,22 @@ class CryptocurrencyController extends Controller
     }
     public function saveCryptocurrency($crypto, $request){
         $crypto->name = $request->name;
-        $crypto->image = $request->image;
-        $crypto->price = $request->price;
       
+        if(!empty($request->file('image'))){
+            $extension = $request->file('image')->extension();
+            $crypto->image = $request->file('image')->getClientOriginalName();
+         
+            $request->file('image')->storeAs('public/images/', $request->file('image')->getClientOriginalName());
+        }
+        
+      
+    }
+
+    public function deleteImage($id){
+        $crypto =   Cryptocurrency::find($id);
+        $crypto->image = '';
+        $crypto->update(); 
+        return redirect('/cryptocurrencies/' .$id.'/edit');
     }
     
 }

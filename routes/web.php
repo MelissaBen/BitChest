@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CryptocurrencyController;
 
-use App\Http\Controllers\CryptocurrencyChartController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Front\UserCryptocurrencyWalletController;
 
-use App\Http\Controllers\UserCryptocurrencyWalletController;
+use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\CryptocurrencyController;
+use App\Http\Controllers\Admin\UserController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,16 +20,17 @@ use App\Http\Controllers\UserCryptocurrencyWalletController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::resource('cryptocurrencies', CryptocurrencyController::class);
 Route::resource('wallets', UserCryptocurrencyWalletController::class);
+Route::resource('users', UserController::class);
+Route::resource('roles', RolesController::class);
+
 
 Route::get('wallets/sell/{id}', [UserCryptocurrencyWalletController::class, 'sellWallet']);
-
 Route::get('wallets/buy/{id}', [UserCryptocurrencyWalletController::class, 'addToWallet']);
 Route::get('chartjs', [CryptocurrencyChartController::class, 'index']);
-Route::resource('users', UserController::class);
-Auth::routes();
-
+Route::get('/cryptocurrencies/deleteImage/{id}', [CryptocurrencyController::class, 'deleteImage']);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/jsontest', [App\Http\Controllers\HomeController::class, 'convertIntoJson']);
+Route::get('/cryptocurrenciesjson', [App\Http\Controllers\HomeController::class, 'convertIntoJson']);

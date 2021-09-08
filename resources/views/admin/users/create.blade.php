@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('password', "Password") !!}
-                {!! Form::text('password', "", ['class' => 'form-control']) !!}
+                {!! Form::password('password',  ['class' => 'form-control']) !!}
             </div>
             
             <div class="form-group">

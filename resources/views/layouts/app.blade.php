@@ -39,7 +39,6 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -56,14 +55,14 @@
                                 </li>
                             @endif
                         @else
-                            @role('user')
+                            @if(auth()->user() && !auth()->user()->isAdmin())
                             <li class="nav-item">
                                 <a class="nav-link" href="/wallets" style="position:relative;color:#FFF;display:flex;align-items:center;margin-right:25px;">
                                     <i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i>Mes portefeuilles
                                     <span style="color:white;background:#00Aff0;width:20px;height:20px;border-radius:50%;position:absolute;bottom:0px;left:0px;font-size:12px;display:flex;justify-content:center;align-items:center;font-weight:bold;"></span>
                                 </a>
                             </li>
-                            @endrole
+                            @endif
                             <li class="nav-item dropdown" style="display:flex;align-items:center;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
@@ -91,7 +90,7 @@
 
         <main>
             
-            @role('admin')
+            @if(auth()->user() && auth()->user()->isAdmin())
                 <nav class="hidden position-fixed d-flex flex-column justify-content-between p-3 " id="sidebar">
                     <div id="toggleNav" class="justify-content-center align-items-center">
                         </i><i class="fas fa-xs fa-angle-double-right"></i>
@@ -106,19 +105,19 @@
                             </div>
                         </a>-->
                         <ul class="my-3 p-0">
-                            <a href="#">
+                            <a href="/roles">
                                 <li class="sidebar-item d-flex align-items-center mb-2">
                                     <i class="fas fa-lg fa-user-circle"></i>
                                     <span class="text-capitalize ml-2">Roles</span>
                                 </li>
                             </a>
-                            <a href="users">
+                            <a href="/users">
                                 <li class="sidebar-item d-flex align-items-center mb-2">
                                     <i class="fas fa-lg fa-user-circle"></i>
                                     <span class="text-capitalize ml-2">Utilisateurs</span>
                                 </li>
                             </a>
-                            <a href="cryptocurrencies">
+                            <a href="/cryptocurrencies">
                                 <li class="sidebar-item d-flex align-items-center mb-2">
                                     <i class="fab fa-lg fa-bitcoin"></i>
                                     <span class="text-capitalize ml-2">Les cryptomonnaies</span>
@@ -150,8 +149,8 @@
                 </div>-->
 
             @else
-            @endrole
-            @role('admin')
+            @endif
+            @if(auth()->user() && auth()->user()->isAdmin())
                 <div class="margin-content">
                     @yield('content')
                 </div>

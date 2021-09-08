@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Models\UserCryptocurrencyWallet;
+use App\Models\Front\UserCryptocurrencyWallet;
+use App\Http\Controllers\Controller;  
 use Illuminate\Http\Request;
 use DB;
 use App\Models\CurrencyRate;
-use App\Models\CryptoCurrency;
+use App\Models\Admin\CryptoCurrency;
+
 class UserCryptocurrencyWalletController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class UserCryptocurrencyWalletController extends Controller
                 $rate[] = $this->getRate($cryptoWallet->id);
                 $total[] = $this->totalInvest($cryptoWallet->id);
             }
-        return view('wallets.index')->with('cryptoWallets', $cryptoWallets)->with('rate', $rate)->with('total', $total)->with('userWallet', $userWallet);
+        return view('front.wallets.index')->with('cryptoWallets', $cryptoWallets)->with('rate', $rate)->with('total', $total)->with('userWallet', $userWallet);
         
     }
 
@@ -46,7 +48,7 @@ class UserCryptocurrencyWalletController extends Controller
     public function create()
     {
         $cryptocurrencies = Cryptocurrency::all();
-        return view('wallets.create')->with('cryptocurrencies', $cryptocurrencies);
+        return view('front.wallets.create')->with('cryptocurrencies', $cryptocurrencies);
     }
     public function saveWallet($wallet, $request){
         $wallet->id_cryptocurrency = $request->id_cryptocurrency;

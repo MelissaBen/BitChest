@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-use App\Models\UserCryptocurrencyWallet;
+use App\Models\Front\UserCryptocurrencyWallet;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
@@ -52,15 +53,15 @@ class User extends Authenticatable
 
 
 
-public function isAdmin()
-{
-    
-    $user = User::where('id', $this->id)->pluck('role_id');
-    if($user[0] == 1){
-        $isAdmin = true;
-    }else{
-        $isAdmin = false;
+    public function isAdmin()
+    {
+        
+        $user = User::where('id', $this->id)->pluck('role_id');
+        if($user[0] == 1){
+            $isAdmin = true;
+        }else{
+            $isAdmin = false;
+        }
+        return $isAdmin;
     }
-    return $isAdmin;
-}
 }

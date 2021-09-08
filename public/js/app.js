@@ -1853,7 +1853,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var uri = 'http://127.0.0.1:8000/jsontest';
+    var uri = 'http://127.0.0.1:8000/cryptocurrenciesjson';
     var cryptoRate = document.getElementById('cryptoRate');
     var todayCrypto = document.getElementById('todayCrypto');
     var yesterdayCrypto = document.getElementById('yesterdayCrypto');
@@ -1935,7 +1935,6 @@ __webpack_require__.r(__webpack_exports__);
 
         todayCrypto.textContent = data['todayCrypto'][this.value - 1].price;
         cryptoIcon.setAttribute('src', "/images/" + data['crypto'][this.value].toLowerCase() + ".png");
-        console.log(cryptoIcon);
 
         if (yesterdayCrypto != null) {
           if (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0) {

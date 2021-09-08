@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\User;
 use Illuminate\Http\Request;
+
+use App\Http\Requests\UserStoreRequest;
 use DB;
 class UserController extends Controller
 {
@@ -21,7 +24,7 @@ class UserController extends Controller
         ->join('users', 'users.role_id', '=', 'roles.id')
         ->orderBy('users.id', 'asc')
         ->get();
-        return view('users.index')->with('users', $users);
+        return view('admin.users.index')->with('users', $users);
     }
 
     /**
@@ -33,7 +36,7 @@ class UserController extends Controller
     {
         
         $roles = DB::table('roles')->get();
-        return view('users.create')->with('roles', $roles);
+        return view('admin.users.create')->with('roles', $roles);
   
     }
 
@@ -43,7 +46,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         $user = new User();
      
@@ -74,7 +77,7 @@ class UserController extends Controller
     {
            
         $roles = DB::table('roles')->get();
-        return view('users.edit')->with('roles', $roles)->with('user', $user);
+        return view('admin.users.edit')->with('roles', $roles)->with('user', $user);
     }
 
     /**
@@ -84,7 +87,7 @@ class UserController extends Controller
      * @param  \App\Models\Cryptocurrency  $cryptocurrency
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserStoreRequest $request, $id)
     {
         $user = User::find($id);
         Db::table('model_has_roles')->where('model_id', $id)->update(['role_id' => $request->role_id]);

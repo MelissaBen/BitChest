@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\Admin\User;
 
-use App\Models\UserCryptocurrencyWallet;
+use App\Models\Front\UserCryptocurrencyWallet;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;

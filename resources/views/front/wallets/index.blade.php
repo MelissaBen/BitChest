@@ -22,7 +22,7 @@
       <div class="card-body">
         <div style="display:flex;justify-content:space-between;">
           <h2 style="display:flex;align-items:center;margin:0;">
-            <img class="pr-2" src="/images/{{$cryptoWallet->image}}.png" alt="">
+            <img class="pr-2" src="/images/{{$cryptoWallet->image}}" alt="">
             <span>{{$cryptoWallet->total . ' ' . $cryptoWallet->name}}</span>
           </h2>
 

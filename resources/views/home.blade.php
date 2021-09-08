@@ -37,7 +37,7 @@
             <section class="row mt-3 mb-5">
                 <div class="col-md-6 col-sm-12 col-xs-12 d-flex align-items-center">
                     <div class="d-flex justify-content-center align-items-center">
-                        <img id="cryptoIcon" class="mr-2" src="/images/{{$crypto[0]->image}}.png"  alt="{{$crypto[0]->image}} logo" />
+                        <img id="cryptoIcon" class="mr-2" src="/images/{{$crypto[0]->image}}"  alt="{{$crypto[0]->name}}-logo" />
                         <h2 id="cryptoRate" style="font-size:35px;margin:0;font-weight:bold;">Bitcoin</h2>
                         <div class=" d-flex align-items-center justify-content-center ml-3 pl-3" style="border-left:1px solid #313131;">
                             <p class="d-flex align-items-center" style="margin:0;display:none;font-size:30x;">
@@ -79,15 +79,15 @@
                         <tbody>
                             @foreach($cryptoRanks as $key => $cryptoRank)
                                 <tr style="line-height:37px;" class="bg-white">
-                                    <td>
-                                        <img class="mr-2" src="/images/{{$cryptoRank->image}}.png" alt="">
+                                    <td width="60%">
+                                        <img class="mr-2" src="/images/{{$cryptoRank->image}}">
                                         <span class="mr-2" style="font-size:20px;">{{$key + 1}}</span>
                                         <span class="mr-2" style="font-size:20px;">{{$cryptoRank->name}}</span>
                                     </td>
-                                    <td>
+                                    <td width="10%">
                                         
                                     </td>   
-                                    <td>
+                                    <td width="30%">
                                         <span style="font-size:20px;">{{$cryptoRank->price}} €</span>
                                     </td>
                                 </tr>
@@ -104,12 +104,12 @@
                         <div class="card" style="padding:20px;border-radius:5px;"> 
                             <p style="font-size:32px;padding-top:0;font-weight:bold;">Détails</p>
                             <div class=" d-flex align-items-center ">
-                                <p style="margin:0;font-size:18px;">1 bitcoin vaut : <span id="todayCrypto" style="font-size:28px;letter-spacing:1px;font-weight:bold;">{{$crypto[0]->price}}</span> € aujourd'hui</p>
+                                <p style="margin:0;font-size:18px;">Valeur d'ajourd'hui : <span id="todayCrypto" style="font-size:28px;letter-spacing:1px;font-weight:bold;">{{$crypto[0]->price}}</span> €</p>
                             </div>
                             
                             @if(!empty($yesterdayCrypto))
                             <div class="d-flex align-items-center">
-                                <p style="margin:0;font-size:18px;">1 bitcoin valait <span id="yesterdayCrypto" style="font-size:25px;letter-spacing:1px;font-weight:bold;">{{$yesterdayCrypto[0]->price}}</span> € hier</p>
+                                <p style="margin:0;font-size:18px;">Valeur d'hier :  <span id="yesterdayCrypto" style="font-size:25px;letter-spacing:1px;font-weight:bold;">{{$yesterdayCrypto[0]->price}}</span> €</p>
                             </div>
                             @endif
                         </div>

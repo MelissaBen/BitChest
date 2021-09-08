@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Front;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+
 class UserCryptocurrencyWallet extends Model
 {
     public $table = "user_cryptocurrency_wallets";

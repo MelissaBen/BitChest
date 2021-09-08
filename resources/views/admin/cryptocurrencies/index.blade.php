@@ -21,7 +21,11 @@
             @foreach($cryptocurrencies as $cryptocurrency)
                 <tr>
                     <td>{{$cryptocurrency->id}}</td>
-                    <td>{{$cryptocurrency->image}}</td>
+                    @if(file_exists(public_path('images/' . $cryptocurrency->image)))
+                        <td><img width="32" height="32" src="/images/{{$cryptocurrency->image}}" alt="crypto_logo"></td>
+                    @else
+                        <td><img width="32" height="32" src="{{asset('storage/images/'.$cryptocurrency->image) }}" alt="crypto_logo"></td>
+                    @endif
                     <td>{{$cryptocurrency->name}}</td>
                     <td>{{$cryptocurrency->price}}</td>
                    <!-- <td><a href="/cryptocurrencies/{{$cryptocurrency->id}}/edit" class="btn btn-primary">Modifier</a></td>-->
