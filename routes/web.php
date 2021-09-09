@@ -27,7 +27,7 @@ Route::resource('wallets', UserCryptocurrencyWalletController::class);
 Route::resource('users', UserController::class);
 Route::resource('roles', RolesController::class);
 
-
+Route::get('/users')->middleware('admin');
 Route::get('wallets/sell/{id}', [UserCryptocurrencyWalletController::class, 'sellWallet']);
 Route::get('wallets/buy/{id}', [UserCryptocurrencyWalletController::class, 'addToWallet']);
 Route::get('chartjs', [CryptocurrencyChartController::class, 'index']);
