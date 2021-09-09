@@ -3,7 +3,6 @@ body{
     color:#313131;
     font-family: 'Open sans';
 
-
 }
 main{
     position:relative;
@@ -14,7 +13,7 @@ main{
 }
 
 footer {
-     margin-top: 100px
+     margin-top: 50px
 }
 
 .footer {
@@ -152,6 +151,11 @@ div.form-group label {
     font-size:18px;
 }
 
+.card-crypto {
+    padding:20px;
+    border-radius:5px
+}
+
 /**
  * Responsive
  */
@@ -164,6 +168,11 @@ div.form-group label {
 @media (max-width: 991px) {
     h2 {
         text-align: center;
+    }
+
+    .mtl {
+        margin-top: 20px !important;
+        margin-left: -15px;
     }
     #sidebar {
         width: 12rem;
@@ -210,6 +219,35 @@ div.form-group label {
 
 }
 
+@media (max-width: 430px) {
+        .card-crypto {
+            margin: 0  !important;
+            border-left: 0  !important;
+        }
+
+        .card-crypto p  {
+            font-size: 15px !important;
+        }
+
+        #cryptoRate {
+            font-size: 25px !important;
+
+        }
+
+        .box {
+            margin-top: 10px !important;
+            text-align: center;
+        }
+        .box label {
+            margin-bottom: 5px !important;
+        }
+        #chartSwitcher {
+            text-align: center;
+
+        }
+
+
+}
 thead th {
     width: 200px;
 }

@@ -9,13 +9,13 @@
     @endrole
    
     <div class="container margin-bottom">
-        <section class="mb-3 mx-4 card" style="padding:20px;border-radius:5px;">
+        <section class="mb-3 mx-4 card card-crypto">
             <section class="row mt-3 mb-5">
                 <div class="col-md-6 col-sm-12 col-xs-12 d-flex align-items-center">
                     <div class="d-flex justify-content-center align-items-center">
                         <img id="cryptoIcon" class="mr-2" src="/images/{{$crypto[0]->image}}"  alt="{{$crypto[0]->name}}-logo" />
                         <h2 id="cryptoRate" style="font-size:35px;margin:0;font-weight:bold;">Bitcoin</h2>
-                        <div class=" d-flex align-items-center justify-content-center ml-3 pl-3" style="border-left:1px solid #313131;">
+                        <div class=" crypto d-flex align-items-center justify-content-center ml-3 pl-3" style="border-left:1px solid #313131;">
                             <p class="d-flex align-items-center" style="margin:0;display:none;font-size:30x;">
                                 <i id="icon" class="fas fa-chart-line" style="font-size:55px;"></i>
                                 <span id="valueForToday" style="font-size:34px;"></span> €
@@ -77,7 +77,7 @@
             <div class="col-md-5" >
                 <div class="row">
                     <div class="col-md-12 pr-0 ">
-                        <div class="card" style="padding:20px;border-radius:5px;"> 
+                        <div class="card mtl" style="padding:20px;border-radius:5px;"> 
                             <p style="font-size:32px;padding-top:0;font-weight:bold;">Détails</p>
                             <div class=" d-flex align-items-center ">
                                 <p style="margin:0;font-size:18px;">Valeur d'ajourd'hui : <span id="todayCrypto" style="font-size:28px;letter-spacing:1px;font-weight:bold;">{{$crypto[0]->price}}</span> €</p>
