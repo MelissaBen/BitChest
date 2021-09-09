@@ -167,6 +167,11 @@
                 </div>
             @endrole
         </main>
+        <footer class="footer py-2 bg-dark fixed-bottom ">
+            <div class="container">
+              <p class="m-0 p-3 text-center text-white">with bitchest we are richets</p>
+            </div>
+        </footer>
     </div>
   
      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

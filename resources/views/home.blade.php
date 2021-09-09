@@ -8,7 +8,7 @@
   
     @endrole
    
-    <div class="container">
+    <div class="container margin-bottom">
         <section class="mb-3 mx-4 card" style="padding:20px;border-radius:5px;">
             <section class="row mt-3 mb-5">
                 <div class="col-md-6 col-sm-12 col-xs-12 d-flex align-items-center">

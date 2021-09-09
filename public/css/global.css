@@ -9,8 +9,23 @@ main{
     position:relative;
     margin-top:87px;
 }
-.navbar{
+.navbar {
     background-color: #191B27 !important;
+}
+
+footer {
+     margin-top: 100px
+}
+
+.footer {
+    background-color: #191B27 !important;
+   
+}
+
+footer p {
+    font-size: 18px;
+    letter-spacing: 3px;
+    
 }
 
 .navbar-brand img{
@@ -26,6 +41,9 @@ div.form-group label {
     color:#3097D1;
 }
 
+.margin-bottom {
+    margin-bottom: 100px !important;
+}
 /*Sidebar*/
 
 #sidebar {

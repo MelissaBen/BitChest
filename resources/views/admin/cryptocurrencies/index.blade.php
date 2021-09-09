@@ -7,7 +7,7 @@
             <a class="admin-add  d-flex flex-column align-items-center justify-content-center text-center" href="/cryptocurrencies/create"> <i class="fas fa-plus-circle fa-lg"></i> <span>Ajouter une cryptomonnaie</span> </a>
     </section>
 
-    <section class="mr-3 ml-4 card my-3 p-3">
+    <section class="mr-3 ml-4 card my-3 p-3 margin-bottom">
         <table style="width:100%;" class="col-12 table table-hover table-responsive">
             <thead class="table-info">
                 <th>Id</th>
