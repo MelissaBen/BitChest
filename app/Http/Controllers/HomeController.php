@@ -28,10 +28,10 @@ class HomeController extends Controller
     public function index()
     {   
         
-        
         //Get cryptocurrencies
         $today = date('Y-m-d');
         $yesterday = date('Y-m-d',strtotime("-1 days"));
+
         $crypto = DB::table('cryptocurrencies as c')->join('currency_rates as cr', 'c.id', '=', 'cr.id_cryptocurrency')->where('cr.created_at', $today)->select(DB::raw('c.name'), 'c.id', 'cr.price', 'c.image')->get()->toArray();
         $yesterdayCrypto = DB::table('currency_rates')->where('created_at', $yesterday)->select('price')->get()->toArray();
         $cryptoRanks = DB::table('cryptocurrencies as c')->join('currency_rates as cr', 'c.id', '=', 'cr.id_cryptocurrency')->where('cr.created_at',$today)->select('c.name', 'c.image', 'cr.price')->orderBy('cr.price', 'desc')->get();
@@ -46,10 +46,11 @@ class HomeController extends Controller
       
         $days = $this->getDaysInCurrentMonth();
         $crypto = DB::table('cryptocurrencies')->select(DB::raw('name'), 'id')->pluck('name','id')->all();
+       
         foreach($crypto as $key => $c){
             $mydata[$key] = $this->getRatesInPeriod($days,$key);
         }
-        
+
         $today = date('Y-m-d');
         $yesterday = date('Y-m-d',strtotime("-1 days"));
         
@@ -58,6 +59,7 @@ class HomeController extends Controller
       
         $array = ['days' => $days, 'mydata' => $mydata, 'todayCrypto' => $todayCrypto, 'yesterdayCrypto' => $yesterdayCrypto, 'crypto' => $crypto];
       
+        
         return response()->json($array);
     }
 

@@ -1,6 +1,6 @@
-
 <script>
-   
+
+
 import { Line } from 'vue-chartjs';
 export default {
    extends: Line,
@@ -17,6 +17,10 @@ export default {
         gradient.addColorStop(0, 'rgba(61, 164, 118, 0.5)')
         gradient.addColorStop(0.5, 'rgba(61, 164, 118, 0.25)');
         gradient.addColorStop(1, 'rgba(61, 164, 118, 0)');
+
+
+
+
 
         this.axios.get(uri).then((response) => {
             let data = response.data;
@@ -37,9 +41,10 @@ export default {
                         icon.style.transform = "rotate(0deg) scaleX(1)";
                         valueForToday.parentNode.style.color = "#43ca79";
                         valueForToday.textContent =  "+" + (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price) ;
-                
+        
                     }
                 }
+                
             this.renderChart(
                 {
                     labels: data['days'],

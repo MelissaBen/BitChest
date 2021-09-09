@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\UserStoreRequest;
 use DB;
+
 class UserController extends Controller
 {
     public function __construct(){
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth']);
     }
     /**
      * Display a listing of the resource.
@@ -34,10 +35,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        
         $roles = DB::table('roles')->get();
         return view('admin.users.create')->with('roles', $roles);
-  
     }
 
     /**
@@ -49,7 +48,6 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $user = new User();
-     
         $this->saveUser($user, $request);
         $user->role_id = 2;
         $user->save();

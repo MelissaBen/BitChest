@@ -2,6 +2,17 @@
 
 
 @section('content')
+
+<section class="container p-0">
+        @if(Session::has('error')) 
+            <div class="alert alert-danger">
+                {{Session::get('error')}}
+            </div>
+            {{Session::put('error', null)}}
+        @endif
+</section>
+
+
 <section class="container">
   <section class="mt-3 p-3" style="background:alice;">
     <section>
@@ -18,16 +29,31 @@
 <div class="row">
     @foreach($cryptoWallets as $key => $cryptoWallet)
     <div class="col-sm-6" style="margin-bottom:30px;">
-    <div class="card">
+    <div class="card" style="position:relative;">
+
+    <form action="/wallets/{{$cryptoWallet->id}}" method="post">
+      {{csrf_field()}}
+      <input type="hidden" name="_method" value="delete" />
+      <button type="submit" class="close" aria-label="Close" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille ?")' style="position:absolute;top:0;left:5px;font-size:30px;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </form>
+
+
+
+
       <div class="card-body">
         <div style="display:flex;justify-content:space-between;">
           <h2 style="display:flex;align-items:center;margin:0;">
             <img class="pr-2" src="/images/{{$cryptoWallet->image}}" alt="">
             <span>{{$cryptoWallet->total . ' ' . $cryptoWallet->name}}</span>
           </h2>
-
-          <button type="button" data-toggle="modal" data-target="#ttes{{$cryptoWallet->id}}" class="btn btn-secondary"><i class="fas fa-shopping-basket"></i>Acheter</button>
-        </div>
+          <form action="/wallets/sell/{{$cryptoWallet->id}}" method="get">
+          {{csrf_field()}}
+          <input type="hidden" name="_method" value="0" />
+          <button type="submit" style="background:none;border:;font-size:24px;"  onclick='return confirm("Êtes-vous sûr de vendre {{$rate[$key][0]* $cryptoWallet->total }}?")'>Vendre pour <span style="color:#43ca79;">{{$rate[$key][0]* $cryptoWallet->total }} €</span></button>
+        </form>
+            </div>
        
         <div>
             
@@ -64,19 +90,15 @@
     </div>
   </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:flex-end;">
-        
-        <div>
+  <div class="d-flex justify-content-between align-items-center mt-4">
+      <button type="button" data-toggle="modal" data-target="#ttes{{$cryptoWallet->id}}" class="btn btn-secondary"><i class="fas fa-shopping-basket mr-2"></i>Acheter</button>
+      <div>
         <p style="font-weight:bold;margin:0;font-style:italic;">Total investi pour ce portefeuille : <span style="font-weight:bold;color:#e86f63;">-{{$total[$key]}} €</span></p>
+        <a class="d-block text-right" href="/wallets/{{$cryptoWallet->id}}">Détails</a>
+      </div>
+  </div>
         
-        
-        </div>
-        <form action="/wallets/sell/{{$cryptoWallet->id}}" method="get">
-                            {{csrf_field()}}
-                            <input type="hidden" name="_method" value="0" />
-                            <button type="submit" style="background:none;border:;font-size:24px;"  onclick='return confirm("Êtes-vous sûr de vendre {{$rate[$key][0]* $cryptoWallet->total }}?")'>Vendre pour <span style="color:#43ca79;">{{$rate[$key][0]* $cryptoWallet->total }} €</span></button>
-        </form>
-        </div>
+     
       
  
       </div>

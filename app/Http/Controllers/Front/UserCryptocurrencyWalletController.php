@@ -6,6 +6,7 @@ use App\Models\Front\UserCryptocurrencyWallet;
 use App\Http\Controllers\Controller;  
 use Illuminate\Http\Request;
 use DB;
+use Session;
 use App\Models\CurrencyRate;
 use App\Models\Admin\CryptoCurrency;
 
@@ -50,6 +51,7 @@ class UserCryptocurrencyWalletController extends Controller
         $cryptocurrencies = Cryptocurrency::all();
         return view('front.wallets.create')->with('cryptocurrencies', $cryptocurrencies);
     }
+
     public function saveWallet($wallet, $request){
         $wallet->id_cryptocurrency = $request->id_cryptocurrency;
         $wallet->total = 0;
@@ -65,10 +67,22 @@ class UserCryptocurrencyWalletController extends Controller
      */
     public function store(Request $request)
     {
+
         $wallet = new UserCryptocurrencyWallet();
-     
         $this->saveWallet($wallet, $request);
-        $wallet->save();
+
+        //Check if wallet is already registered in DB
+        $walletExists = DB::table('user_cryptocurrency_wallets')
+        ->where('id_cryptocurrency', $wallet->id_cryptocurrency)
+        ->where('id_user', auth()->user()->id)
+        ->get()->toArray();
+
+        if(empty($walletExists)){
+            $wallet->save();
+        }else{
+            Session::put('error', 'Vous avez déjà un portefeuille pour cette cryptomonnaie !');
+        }
+
         return redirect('/wallets');
     }
 
@@ -78,9 +92,15 @@ class UserCryptocurrencyWalletController extends Controller
      * @param  \App\Models\Wallet  $wallet
      * @return \Illuminate\Http\Response
      */
-    public function show(UserCryptocurrencyWallet $userCryptocurrencyWallet)
+    public function show($id)
     {
-        //
+        $walletActions = DB::table('user_wallet_history as wh')
+        ->join('user_cryptocurrency_wallets as cw', 'cw.id', 'wh.id_wallet')
+        ->select('wh.total', 'wh.created_at')
+        ->where('wh.id_user', auth()->user()->id)
+        ->where('wh.id_wallet', $id)
+        ->get()->toArray();
+        return view('front.wallets.show')->with('walletActions', $walletActions);
     }
 
     /**
@@ -134,22 +154,31 @@ class UserCryptocurrencyWalletController extends Controller
 
 
     public function addToWallet(Request $request, $id){
+
         $wallet = UserCryptocurrencyWallet::find($id);
-        $userWallet = DB::table('users_wallets')->where('id_user', auth()->user()->id)->first();
-        
         $date = date('Y-m-d');
+
+        $userWallet = DB::table('users_wallets')
+        ->where('id_user', auth()->user()->id)
+        ->first();
+        
+        
         $getCryptocurrency = CurrencyRate::where('created_at', $date)->where('id_cryptocurrency', $wallet->id_cryptocurrency)->pluck('price');
         $userWallet->solde -= $request->updatee * $getCryptocurrency[0];
         DB::table('users_wallets')->where('id_user', auth()->user()->id)->update(['solde' => $userWallet->solde]);
   
-        DB::table('user_wallet_history')->insert([
-            'id_user' => auth()->user()->id,
-            'id_wallet' => $wallet->id, 
-            'total' => $getCryptocurrency[0] * $request->updatee
-        ]);
+        
 
 
         if($request->updatee){
+            DB::table('user_wallet_history')->insert([
+                'id_user' => auth()->user()->id,
+                'id_wallet' => $wallet->id, 
+                'total' => $getCryptocurrency[0] * $request->updatee,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
             $wallet->total += $request->updatee;
             $userWallet->solde -= $request->updateee;
             
@@ -157,7 +186,13 @@ class UserCryptocurrencyWalletController extends Controller
         }
 
         if($request->updateee){
-
+            DB::table('user_wallet_history')->insert([
+                'id_user' => auth()->user()->id,
+                'id_wallet' => $wallet->id, 
+                'total' =>  $request->updateee,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
             $wallet->total += ($request->updateee / $this->getRate($wallet->id)[0]);
             $userWallet->solde -= $request->updateee;
             

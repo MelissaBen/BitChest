@@ -13,7 +13,7 @@
                 <th>Id</th>
                 <th>Logo</th>
                 <th>Nom</th>
-                <th>Valeur courante</th>
+                <th></th>
                 <th></th>
                 <th>    </th>
             </thead>

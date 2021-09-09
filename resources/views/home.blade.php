@@ -1,29 +1,5 @@
 @extends('layouts.app')
-<style>
 
-.box select {
-  background-color: #0563af;
-  color: white;
-  width:150px;
-  padding:2px 5px;
-  border: none;
-  border-radius:5px;
-  font-size: 18px;
-  -webkit-appearance: none;
-  appearance: none;
-  outline: none;
-}
-
-
-.box:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.box select option {
-  padding: 30px;
-}
-</style>
 @section('content')
     @role('admin')
         <section style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;background:#FFF;padding: 20px;">
