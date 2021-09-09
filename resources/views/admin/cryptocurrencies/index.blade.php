@@ -36,7 +36,6 @@
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="delete" />
                             <button type="submit" class="admin-delete  btn btn-danger mx-3" onclick='return confirm("Êtes-vous sûr de vouloir supprimer {{$cryptocurrency->name}} ?")'><i class="fas fa-trash-alt"></i></button>
-                            <!--<button type="submit" class="admin-delete dropdown-item" onclick='return confirm("Êtes-vous sûr de vouloir supprimer {{$cryptocurrency->name}} ?")'><i class="fas fa-trash-alt"></i>Supprimer</button>-->
                         </form>
                     </td>
                 </tr>

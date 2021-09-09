@@ -82,7 +82,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                      
+
                                 </div>
                             </li>
                            
@@ -143,8 +143,8 @@
             @endrole
         </main>
         <footer class="footer py-2 bg-dark fixed-bottom ">
-            <div class="container">
-              <p class="m-0 p-3 text-center text-white">with bitchest we are richest</p>
+            <div class="container text-center">
+              <p class="m-0 p-3 text-center text-white">with bitchest you are richest</p>
             </div>
         </footer>
     </div>
