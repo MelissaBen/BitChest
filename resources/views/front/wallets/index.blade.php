@@ -56,7 +56,7 @@
             {{csrf_field()}}
             <div class="form-group m-2">
                 <label for="updateee">rentrer une valeur en euros</label>
-                <input style="max-width:100px;width:100%;"class="form-control" name="updatee"  />
+                <input style="max-width:100px;width:100%;"class="form-control" name="updateee"  />
             </div>
             <button type="submit" class="admin-delete btn btn-outline-primary m-2" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} </button>
         </form>
