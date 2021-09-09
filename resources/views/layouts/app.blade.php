@@ -82,9 +82,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-
-
-                                   
+                                      
                                 </div>
                             </li>
                            
@@ -104,13 +102,6 @@
 
                     </div>
                     <div id="navTop">
-                        <!--
-                        <a href="#">
-                            <div class="d-flex justify-content-center align-items-center flex-wrap border-bottom pb-5">
-                                <i class="fas fa-money-check-alt fa-3x" id="logoIcon"></i>
-                                <span class="ml-2" id="logotype">BitChest</span>
-                            </div>
-                        </a>-->
                         <ul class="my-3 p-0">
                             <a href="/roles">
                                 <li class="sidebar-item d-flex align-items-center mb-2">
@@ -139,22 +130,6 @@
                         </div>
                     </div>
                 </nav>
-               <!--
-                <div style="display:flex;">
-                    <ul class="nav flex-column" style="width:250px;position:fixed;height:100%;background:red;">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Roles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="users">Utilisateurs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cryptocurrencies">Cryptomonnaies</a>
-                        </li>
-                    
-                    </ul>
-                </div>-->
-
             @else
             @endif
             @if(auth()->user() && auth()->user()->isAdmin())
@@ -169,7 +144,7 @@
         </main>
         <footer class="footer py-2 bg-dark fixed-bottom ">
             <div class="container">
-              <p class="m-0 p-3 text-center text-white">with bitchest we are richets</p>
+              <p class="m-0 p-3 text-center text-white">with bitchest we are richest</p>
             </div>
         </footer>
     </div>

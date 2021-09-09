@@ -12,7 +12,6 @@
         @endif
 </section>
 
-
 <section class="container">
   <section class="mt-3 p-3" style="background:alice;">
     <section>
@@ -59,11 +58,6 @@
             
             <p style="margin:0;">Valeur du jour = <?php echo($rate[$key][0])?> €</p>
           </div>
-
-
-
-
-
           
     <div class="modal" id="ttes{{$cryptoWallet->id}}">
     <div class="modal-dialog" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:600px;width:100%;">
