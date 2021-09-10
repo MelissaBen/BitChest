@@ -2,6 +2,21 @@
 
 @section('content')
 <div class="container">
+    <section class="row justify-content-center">
+        <section class="d-flex justify-content-between col-md-8">
+            <article>
+                <h2>Accès administrateur</h2>
+                <p>Identifiant : adminbitchest@gmail.com</p>
+                <p>Mot de passe : 12345678</p>
+            </article>
+            <article>
+                <h2>Accès utilisateur</h2>
+                <p>Identifiant : john.doe@gmail.com</p>
+                <p>Mot de passe : 12345678</p>
+            </article>
+        </section>
+    </section>
+    
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-5">
