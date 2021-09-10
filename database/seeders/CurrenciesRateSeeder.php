@@ -16,22 +16,25 @@ class CurrenciesRateSeeder extends Seeder
      */
     public function run()
     {
-        $firstDayThisMonth = date('Y-m-01');
-        $lastDayThisMonth = date("Y-m-t");
+        $firstDayThisMonth = date('01-m-Y');
+      
+        $lastDayThisMonth = date("t-m-Y");
         $period = CarbonPeriod::between($firstDayThisMonth, $lastDayThisMonth);
 
         foreach ($period as $date) {
-            $days[] = $date->format('Y-m-d');
+            $days[] = $date->format('d-m-Y');
         }
+        
         foreach($days as $day){
             for($i = 1; $i<11 ; $i++){
-                $user = new CurrencyRate([
+                $currencyRate = new CurrencyRate([
                     'price' => rand(1000,1200),
                     'id_cryptocurrency' => $i,
                     'created_at' => $day
+                    
                 ]);
-                $user->timestamps = false;
-                $user->save();
+                $currencyRate->timestamps = false;
+                $currencyRate->save();
             }
         }
     }

@@ -57,9 +57,9 @@
                         @else
                             @if(auth()->user() && !auth()->user()->isAdmin())
                             <li class="nav-item">
-                                <a class="nav-link" href="/wallets" style="position:relative;color:#FFF;display:flex;align-items:center;margin-right:25px;">
+                                <a class="nav-link" href="/wallets" style="color:#FFF;display:flex;align-items:center;margin-right:25px;">
                                     <i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i>Mes portefeuilles
-                                    <span style="color:white;background:#00Aff0;width:20px;height:20px;border-radius:50%;position:absolute;bottom:0px;left:0px;font-size:12px;display:flex;justify-content:center;align-items:center;font-weight:bold;"></span>
+
                                 </a>
                             </li>
                             @endif
