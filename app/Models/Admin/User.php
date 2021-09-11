@@ -13,9 +13,7 @@ use App\Models\Front\UserCryptocurrencyWallet;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
-    public function userCryptocurrencyWallets(){
-        return $this->hasMany('App\Models\UserCryptocurrencyWallet', 'id');
-    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,12 +45,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function wallets(){
-        return $this->hasMany('App\Models\Cryptocurrency');
-    }
 
-
-
+    //Check if current user is admin
     public function isAdmin()
     {
         

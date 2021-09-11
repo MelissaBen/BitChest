@@ -42,9 +42,7 @@
             </div>
             @endif
 
-           
-        
-            {!! Form::submit('Ajouter',  ['class' => 'edit-btn btn-primary']) !!}
+            {!! Form::submit('Modifier',  ['class' => 'edit-btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
  

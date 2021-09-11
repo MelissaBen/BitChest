@@ -10,6 +10,7 @@ use Session;
 class RolesController extends Controller
 {
 
+    //Need to be authenticated and admin
     public function __construct(){
         $this->middleware(['auth', 'admin']);
     }
@@ -102,9 +103,11 @@ class RolesController extends Controller
         return redirect('/roles');
     }
 
+    /*
+    * Get form request to store data in database
+    */
     public function saveRole($role, $request){
         $role->name = $request->name;
         $role->guard_name = "web";
-      
     }
 }

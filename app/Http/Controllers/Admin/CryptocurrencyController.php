@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Cryptocurrency;
 use Illuminate\Http\Request;
+use Session;
 
 class CryptocurrencyController extends Controller
 {
+    //Need to be authenticated and admin
     public function __construct(){
         $this->middleware(['auth', 'admin']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +31,6 @@ class CryptocurrencyController extends Controller
      */
     public function create()
     {
-    
         return view('admin.cryptocurrencies.create');
     }
 
@@ -41,9 +43,9 @@ class CryptocurrencyController extends Controller
     public function store(Request $request)
     {
         $crypto = new Cryptocurrency();
-     
         $this->saveCryptocurrency($crypto, $request);
         $crypto->save();
+        Session::put('success', 'Cryptomonnaie ' . $crypto->name . ' ajouté avec succès.');
         return redirect('/cryptocurrencies');
     }
 
@@ -96,19 +98,21 @@ class CryptocurrencyController extends Controller
         $crypto->delete();
         return redirect('/cryptocurrencies');
     }
+
+    /**
+     * Get form request to store data in database
+     */
+    
     public function saveCryptocurrency($crypto, $request){
         $crypto->name = $request->name;
-      
         if(!empty($request->file('image'))){
             $extension = $request->file('image')->extension();
             $crypto->image = $request->file('image')->getClientOriginalName();
-         
             $request->file('image')->storeAs('public/images/', $request->file('image')->getClientOriginalName());
         }
-        
-      
     }
 
+    //Delete the image to upload another one
     public function deleteImage($id){
         $crypto =   Cryptocurrency::find($id);
         $crypto->image = '';

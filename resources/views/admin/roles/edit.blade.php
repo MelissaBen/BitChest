@@ -20,7 +20,7 @@
                 {!! Form::text('name', "$role->name", ['class' => 'form-control']) !!}
             </div>
           
-            {!! Form::submit('Ajouter',  ['class' => 'edit-btn  btn-primary']) !!}
+            {!! Form::submit('Modifier',  ['class' => 'edit-btn  btn-primary']) !!}
         {!! Form::close() !!}
     </div>
  

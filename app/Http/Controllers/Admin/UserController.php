@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\User;
 use Illuminate\Http\Request;
-
 use App\Http\Requests\UserStoreRequest;
 use DB;
+use Session;
 
 class UserController extends Controller
 {
+    //Need to be authenticated 
+
     public function __construct(){
         $this->middleware(['auth']);
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +34,7 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -49,8 +53,11 @@ class UserController extends Controller
     {
         $user = new User();
         $this->saveUser($user, $request);
+
+        // By default, user's role is customer
         $user->role_id = 2;
         $user->save();
+        Session::put('success', 'Utilisateur ' . $user->firstname . ' '. $user->lastname . ' ajouté avec succès.');
         return redirect('/users');
     }
 
@@ -107,6 +114,9 @@ class UserController extends Controller
         return redirect('/users');
     }
  
+    /*
+    * Get form request to store data in database
+    */
     public function saveUser($user, $request){
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;

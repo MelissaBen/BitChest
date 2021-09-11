@@ -2,13 +2,22 @@
 
 
 @section('content')
-    <section style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;background:#FFF;padding: 20px;">
-        <h2>Cryptomonnaies</h2>
+    <section class="d-flex justify-content-between align-items-center p-4 bg-white">
+        <h2>Liste des cryptomonnaies</h2>
             <a class="admin-add  d-flex flex-column align-items-center justify-content-center text-center" href="/cryptocurrencies/create"> <i class="fas fa-plus-circle fa-lg"></i> <span>Ajouter une cryptomonnaie</span> </a>
+    </section>
+    
+    <section class="container-fluid p-0">
+        @if(Session::has('success')) 
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+            {{Session::put('success', null)}}
+        @endif
     </section>
 
     <section class="mr-3 ml-4 card my-3 p-3 margin-bottom">
-        <table style="width:100%;" class="col-12 table table-hover table-responsive">
+        <table class="col-12 table table-hover table-responsive w-100">
             <thead class="table-info">
                 <th>Id</th>
                 <th>Logo</th>
@@ -28,7 +37,6 @@
                     @endif
                     <td>{{$cryptocurrency->name}}</td>
                     <td>{{$cryptocurrency->price}}</td>
-                   <!-- <td><a href="/cryptocurrencies/{{$cryptocurrency->id}}/edit" class="btn btn-primary">Modifier</a></td>-->
                     <td><a href="/cryptocurrencies/{{$cryptocurrency->id}}/edit" class="btn btn-warning mx-3"><i class="fas fa-edit"></i></a></td>
 
                     <td> 
