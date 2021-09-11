@@ -38,7 +38,7 @@ class CreateCryptocurrenciesSeeder extends Seeder
             ],
             [
                 'id' => 4, 
-                'name' => 'Bitcoin Cash',
+                'name' => 'Bitcoin-Cash',
                 'image' => 'bitcoin-cash.png',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

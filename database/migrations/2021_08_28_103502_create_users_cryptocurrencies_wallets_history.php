@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserWalletHistory extends Migration
+class CreateUsersCryptocurrenciesWalletsHistory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateUserWalletHistory extends Migration
      */
     public function up()
     {
-        Schema::create('user_wallet_history', function (Blueprint $table) {
+        Schema::create('users_cryptocurrencies_wallets_history', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
             $table->integer('id_wallet');
             $table->float('total');
+            $table->float('gain',20,8);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateUserWalletHistory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_wallet_history');
+        Schema::dropIfExists('users_cryptocurrencies_wallets_history');
     }
 }

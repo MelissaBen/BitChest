@@ -45,34 +45,35 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">Connexion</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Inscription</a>
                                 </li>
                             @endif
                         @else
                             @if(auth()->user() && !auth()->user()->isAdmin())
                             <li class="nav-item">
-                                <a class="nav-link" href="/wallets" style="color:#FFF;display:flex;align-items:center;margin-right:25px;">
-                                    <i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i>Mes portefeuilles
+                                <a class="nav-link d-flex align-items-center text-white mr-4" href="/wallets">
+                                    <i  class="fas fa-wallet"></i>Mes portefeuilles
 
                                 </a>
                             </li>
                             @endif
-                            <li class="nav-item dropdown" style="display:flex;align-items:center;">
+                            <li class="nav-item dropdown d-flex align-items-center">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/users/{{auth()->user()->id}}/edit">
-                                    Mes informations
-                                    
-                                </a>    
+                                    @role('customer')
+                                    <a class="dropdown-item" href="/account">
+                                        Mes informations personnelles 
+                                    </a>   
+                                    @endrole 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -137,16 +138,18 @@
                     @yield('content')
                 </div>
             @else
-                <div style="margin-top:8rem;">
+                <div class="mt-5">
                     @yield('content')
                 </div>
             @endrole
         </main>
-        <footer class="footer py-2 bg-dark fixed-bottom ">
-            <div class="container text-center">
-              <p class="m-0 p-3 text-center text-white">with bitchest you are richest</p>
-            </div>
-        </footer>
+        @role('customer')
+            <footer class="footer py-2 bg-dark fixed-bottom">
+                <div class="container text-center">
+                <p class="m-0 p-3 text-center text-white">With bitchest you are richest</p>
+                </div>
+            </footer>
+        @endrole
     </div>
   
      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

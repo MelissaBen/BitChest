@@ -75,7 +75,7 @@ class RegisterController extends Controller
         
         DB::table('users_wallets')->insert([
             'id_user' => $user->id,
-            'solde' => 1000.00,
+            'solde' => 2000.00,
         ]);
         return $user;
         

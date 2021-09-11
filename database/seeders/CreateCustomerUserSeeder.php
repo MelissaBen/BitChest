@@ -9,7 +9,7 @@ use App\Models\Front\UserCryptocurrencyWallet;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
-class CreateUserSeeder extends Seeder
+class CreateCustomerUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -40,11 +40,11 @@ class CreateUserSeeder extends Seeder
         ];
         
 
-        DB::table('user_cryptocurrency_wallets')->insert($wallets);
+        DB::table('user_cryptocurrencies_wallets')->insert($wallets);
 
         DB::table('users_wallets')->insert([
             'id_user' => 1,
-            'solde' => 1000.00,
+            'solde' => 2000.00,
         ]);
     }
 }

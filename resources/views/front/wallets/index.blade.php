@@ -3,37 +3,45 @@
 
 @section('content')
 
-<section class="container p-0">
+
+
+<section class="userwallets container">
+  <section class="mt-3 p-3 bg-alice">
+    <section>
+      <h2>Solde de mon compte</h2>
+      <p>{{$userWallet->solde}} €</p>
+    </section>
+  </section>
+
+  <section class="container p-0">
         @if(Session::has('error')) 
             <div class="alert alert-danger">
                 {{Session::get('error')}}
             </div>
             {{Session::put('error', null)}}
+        @elseif(Session::has('success'))
+          <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+            {{Session::put('success', null)}}
         @endif
 </section>
-
-<section class="container">
-  <section class="mt-3 p-3" style="background:alice;">
-    <section>
-      <h2 style=>Solde de mon compte</h2>
-      <p>{{$userWallet->solde}} €</p>
-    </section>
-  </section>
   
   <div class="d-flex align-items-center justify-content-between my-3">
-    <h2><i style="font-size:34px;margin-right:10px;" class="fas fa-wallet"></i> Mes portefeuilles</h2>
+    <h2><i class="fas fa-wallet"></i> Mes portefeuilles</h2>
     <a href="/wallets/create"><i class="fas fa-plus-circle"></i> Créer un nouveau portefeuille</a>
   </div>
 
 <div class="row">
     @foreach($cryptoWallets as $key => $cryptoWallet)
-    <div class="col-sm-6" style="margin-bottom:30px;">
-    <div class="card" style="position:relative;">
+    <div class="col-sm-6 mb-5">
+    <div class="card position-relative">
 
     <form action="/wallets/{{$cryptoWallet->id}}" method="post">
       {{csrf_field()}}
       <input type="hidden" name="_method" value="delete" />
-      <button type="submit" class="close" aria-label="Close" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille ?")' style="position:absolute;top:0;left:5px;font-size:30px;">
+      <button type="submit" class="close" aria-label="Close" 
+        onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille ? ")'>
         <span aria-hidden="true">&times;</span>
       </button>
     </form>
@@ -42,59 +50,53 @@
 
 
       <div class="card-body">
-        <div style="display:flex;justify-content:space-between;">
-          <h2 style="display:flex;align-items:center;margin:0;">
-            <img class="pr-2" src="/images/{{$cryptoWallet->image}}" alt="">
+        <div class="d-flex justify-content-between">
+          <p class="totalCrypto d-flex align-items-center m-0">
+            <img class="pr-2" src="/images/{{$cryptoWallet->image}}" alt="crypto logo">
             <span>{{$cryptoWallet->total . ' ' . $cryptoWallet->name}}</span>
-          </h2>
+          </p>
           <form action="/wallets/sell/{{$cryptoWallet->id}}" method="get">
           {{csrf_field()}}
           <input type="hidden" name="_method" value="0" />
-          <button type="submit" style="background:none;border:;font-size:24px;"  onclick='return confirm("Êtes-vous sûr de vendre {{$rate[$key][0]* $cryptoWallet->total }}?")'>Vendre pour <span style="color:#43ca79;">{{$rate[$key][0]* $cryptoWallet->total }} €</span></button>
+          <button type="submit" class="sellWalletButton rounded"   
+            onclick='return confirm("Êtes-vous sûr de vendre {{$rate[$key][0] * $cryptoWallet->total }} € ?")'>
+            Vendre pour <span>{{round($rate[$key]* $cryptoWallet->total, 2) }} €</span>
+          </button>
         </form>
             </div>
        
         <div>
             
-            <p style="margin:0;">Valeur du jour = <?php echo($rate[$key][0])?> €</p>
+            <p class="m-0">Valeur du jour = <?php echo($rate[$key])?> €</p>
           </div>
           
-    <div class="modal" id="ttes{{$cryptoWallet->id}}">
-    <div class="modal-dialog" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:600px;width:100%;">
+    <div class="modal" id="modal{{$cryptoWallet->id}}">
+    <div class="modal-dialog">
       <div class="modal-content">
 
-        <form action="/wallets/buy/{{$cryptoWallet->id}}" method="get">
+       
+        <form action="/wallets/buy/{{$cryptoWallet->id}}" method="get" class="p-5">
             {{csrf_field()}}
             <div class="form-group m-2">
-                  <label for="updatee">Nombre de {{$cryptoWallet->name}} voulu : </label>
-                  <input style="max-width:100px;width:100%;"class="form-control" name="updatee"  />
-             </div>
-            <button type="submit" class="admin-delete btn btn-outline-primary m-2" onclick='return confirm("Êtes-vous sûr de vouloir acheter {{$cryptoWallet->name}} {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} au cours actuel</button>
-                          
-        </form>
-        <form action="/wallets/buy/{{$cryptoWallet->id}}" method="get" class="pt-5">
-            {{csrf_field()}}
-            <div class="form-group m-2">
-                <label for="updateee">rentrer une valeur en euros</label>
-                <input style="max-width:100px;width:100%;"class="form-control" name="updateee"  />
+                <label for="cryptoCashValueWanted" class="d-block text-center">Combien souhaitez-vous investir pour du {{$cryptoWallet->name}} ?</label>
+                <input type="number" step="any" class="form-control w-100 mx-auto my-4 text-center"  style="max-width:60%;" name="cryptoCashValueWanted"  placeholder="300.00"/>
             </div>
-            <button type="submit" class="admin-delete btn btn-outline-primary m-2" onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille {{$cryptoWallet->id}} ?")'>Acheter {{$cryptoWallet->name}} </button>
+            <button type="submit" class="admin-delete mx-auto d-block btn btn-outline-primary m-2" 
+            onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille ?")'>Acheter {{$cryptoWallet->name}} </button>
         </form>
       </div>
     </div>
   </div>
 
   <div class="d-flex justify-content-between align-items-center mt-4">
-      <button type="button" data-toggle="modal" data-target="#ttes{{$cryptoWallet->id}}" class="btn btn-secondary"><i class="fas fa-shopping-basket mr-2"></i>Acheter</button>
-      <div>
-        <p style="font-weight:bold;margin:0;font-style:italic;">Total investi pour ce portefeuille : <span style="font-weight:bold;color:#e86f63;">-{{$total[$key]}} €</span></p>
+      <button type="button" data-toggle="modal" data-target="#modal{{$cryptoWallet->id}}" class="btn btn-secondary"><i class="fas fa-shopping-basket mr-2"></i>Acheter</button>
+      <div class="totalinvest">
+        <p>Total investi pour ce portefeuille : <span>-{{$total[$key]}} €</span></p>
         <a class="d-block text-right" href="/wallets/{{$cryptoWallet->id}}">Détails</a>
       </div>
   </div>
         
-     
-      
- 
+
       </div>
     </div>
   </div>

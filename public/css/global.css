@@ -1,20 +1,24 @@
 body{
-    /*background-color:#171933;*/
     color:#313131;
     font-family: 'Open sans';
 
+}
+#app{
+    display:flex;
+    flex-direction:column;
 }
 main{
     position:relative;
     margin-top:87px;
 }
+h2{
+    font-size:35px;
+    font-weight:bold;
+}
 .navbar {
     background-color: #191B27 !important;
 }
 
-footer {
-     margin-top: 50px
-}
 
 .footer {
     background-color: #191B27 !important;
@@ -26,7 +30,19 @@ footer p {
     letter-spacing: 3px;
     
 }
-
+table caption{
+    caption-side:top;
+    color:#313131;
+    font-size:32px;
+    padding-top:0;
+    font-weight:bold;
+}
+table.cryptoRanks tr{
+    line-height:37px;
+}
+table.cryptoRanks span{
+    font-size:20px;
+}
 .navbar-brand img{
     width:200px;
 }
@@ -39,17 +55,69 @@ div.form-group label {
 .admin-add{
     color:#3097D1;
 }
+.cryptorenceterate{
+    font-size:18px;
+}
+.cryptorecenterate span{
+    font-size:25px;
+    letter-spacing:1px;
+    font-weight:bold;
+}
 
 .margin-bottom {
     margin-bottom: 100px !important;
 }
+.fa-wallet{
+    font-size:34px;
+    margin-right:10px;
+}
+.sellWalletButton{
+    font-size:20px;
+    background:none;
+    border:1.5px solid #aac2e0;
+}
+.sellWalletButton span{
+    color:#43ca79;
+}
+.totalinvest p{
+    font-weight:bold;
+    margin:0;
+    font-style:italic;
+}
+.totalinvest span{
+    font-weight:bold;
+    color:#E86f63;
+}
+.modal-dialog{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) !important;
+    max-width:600px;
+    width:100%;
+}
+.login-form{
+    margin-bottom:132px;
+}
+.register-form{
+    margin-bottom:116px;
+}
+button.close{
+    position:absolute;
+    top:0;
+    left:5px;
+    font-size:30px;
+}
+.totalCrypto{
+    font-weight:bold;
+    font-size:22px;
+}
+
 /*Sidebar*/
 
 #sidebar {
     width: 300px;
-    height: 100vh;
-    /*background: #4949ff;
-    background: linear-gradient(135deg, #4949ff 10%, rgb(67, 202, 121) 90%);*/
+    height: 100%;
     background:#323A46;
     font-size: 1rem;
     -webkit-box-shadow: 5px 0px 8px 0px #949494;
@@ -155,7 +223,15 @@ div.form-group label {
     padding:20px;
     border-radius:5px
 }
-
+.chartswitcherlabel{
+    font-size:18px;
+}
+#icon{
+    font-size:55px;
+}
+#valueForToday{
+    font-size:34px;
+}
 /**
  * Responsive
  */
@@ -229,7 +305,7 @@ div.form-group label {
             font-size: 15px !important;
         }
 
-        #cryptoRate {
+        #cryptoRateName {
             font-size: 25px !important;
 
         }

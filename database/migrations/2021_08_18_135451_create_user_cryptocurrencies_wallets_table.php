@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCurrencyRatesTable extends Migration
+class CreateUserCryptocurrenciesWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCurrencyRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('currency_rates', function (Blueprint $table) {
+        Schema::create('user_cryptocurrencies_wallets', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
-            $table->integer('price');
-            $table->date('created_at');
+            $table->integer('id_user');
+            $table->float('total', 20, 8);
             $table->integer('id_cryptocurrency');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateCurrencyRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currency_rates');
+        Schema::dropIfExists('user_cryptocurrencies_wallets');
     }
 }

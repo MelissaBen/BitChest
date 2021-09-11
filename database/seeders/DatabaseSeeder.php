@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolesTableSeeder::class);
+        $this->call(CreateRolesSeeder::class);
         $this->call(CreateCryptocurrenciesSeeder::class);
-        $this->call(CreateUserSeeder::class);
+        $this->call(CreateCustomerUserSeeder::class);
         $this->call(CreateAdminUserSeeder::class);
-        $this->call(CurrenciesRateSeeder::class);
+        $this->call(CreateCryptocurrenciesRateSeeder::class);
     }
 }

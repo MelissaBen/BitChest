@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
-class RolesTableSeeder extends Seeder
+class CreateRolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class RolesTableSeeder extends Seeder
     {
         $roles = [
             'admin',
-            'user'
+            'customer'
          ];
       
          foreach ($roles as $role) {

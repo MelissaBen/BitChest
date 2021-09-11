@@ -17,7 +17,7 @@
         </section>
     </section>
     
-    <div class="row justify-content-center">
+    <div class="row justify-content-center login-form">
         <div class="col-md-8">
             <div class="card mt-5">
                 <div class="card-header">Connexion</div>

@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Front\UserCryptocurrencyWalletController;
-
+use App\Http\Controllers\Front\UserCryptocurrenciesWalletController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\CryptocurrencyController;
 use App\Http\Controllers\Admin\UserController;
@@ -21,16 +21,23 @@ use App\Http\Controllers\Admin\UserController;
 |
 */
 Auth::routes();
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+//Admin routes
 Route::resource('cryptocurrencies', CryptocurrencyController::class);
-Route::resource('wallets', UserCryptocurrencyWalletController::class);
 Route::resource('users', UserController::class);
 Route::resource('roles', RolesController::class);
-
-
-Route::get('wallets/sell/{id}', [UserCryptocurrencyWalletController::class, 'sellWallet']);
-Route::get('wallets/buy/{id}', [UserCryptocurrencyWalletController::class, 'addToWallet']);
-Route::get('chartjs', [CryptocurrencyChartController::class, 'index']);
 Route::get('/cryptocurrencies/deleteImage/{id}', [CryptocurrencyController::class, 'deleteImage']);
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cryptocurrenciesjson', [App\Http\Controllers\HomeController::class, 'convertIntoJson']);
+Route::get('/cryptocurrenciesjson', [HomeController::class, 'convertIntoJson']);
+
+//User routes
+Route::resource('wallets', UserCryptocurrenciesWalletController::class);
+Route::get('wallets/sell/{id}', [UserCryptocurrenciesWalletController::class, 'sellWallet']);
+Route::get('wallets/buy/{id}', [UserCryptocurrenciesWalletController::class, 'addToWallet']);
+Route::get('account', [HomeController::class, 'editCustomerInfo']);
+Route::put('account/update', [HomeController::class, 'updateCustomerInfo'])->name('account.update');
+
+
+
+
+

@@ -16,7 +16,7 @@ class CreateCryptocurrenciesTable extends Migration
         Schema::create('cryptocurrencies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->default('no_image_found.png');
             $table->timestamps();
         });
     }
