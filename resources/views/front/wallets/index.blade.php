@@ -59,7 +59,7 @@
           {{csrf_field()}}
           <input type="hidden" name="_method" value="0" />
           <button type="submit" class="sellWalletButton rounded"   
-            onclick='return confirm("Êtes-vous sûr de vendre {{$rate[$key][0] * $cryptoWallet->total }} € ?")'>
+            onclick='return confirm("Êtes-vous sûr de vendre le contenu de votre portefeuille pour {{ round($rate[$key] * $cryptoWallet->total) }} € ?")'>
             Vendre pour <span>{{round($rate[$key]* $cryptoWallet->total, 2) }} €</span>
           </button>
         </form>
