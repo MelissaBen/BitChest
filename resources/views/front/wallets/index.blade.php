@@ -53,7 +53,11 @@
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <p class="totalCrypto d-flex align-items-center m-0">
-            <img class="pr-2" src="/images/{{$cryptoWallet->image}}" alt="crypto logo">
+            @if(file_exists(public_path('images/' . $cryptoWallet->image)))
+                <td><img width="40"height="32" class="pr-2" src="/images/{{$cryptoWallet->image}}" alt="crypto logo"></td>
+            @else
+                <td><img width="40" height="32" class="pr-2" src="{{asset('storage/images/'.$cryptoWallet->image) }}" alt="crypto logo">
+            @endif
             <span>{{$cryptoWallet->total . ' ' . $cryptoWallet->name}}</span>
           </p>
           <form action="/wallets/sell/{{$cryptoWallet->id}}" method="get">
@@ -80,7 +84,7 @@
             {{csrf_field()}}
             <div class="form-group m-2">
                 <label for="cryptoCashValueWanted" class="d-block text-center">Combien souhaitez-vous investir pour du {{$cryptoWallet->name}} ?</label>
-                <input type="number" step="any" class="form-control w-100 mx-auto my-4 text-center"  style="max-width:60%;" name="cryptoCashValueWanted"  placeholder="300.00"/>
+                <input type="number" step="any" class="form-control w-100 mx-auto my-4 text-center"  style="max-width:60%;" name="cryptoCashValueWanted"  placeholder="Exemple : 300.50"/>
             </div>
             <button type="submit" class="admin-delete mx-auto d-block btn btn-outline-primary m-2" 
             onclick='return confirm("Êtes-vous sûr de vouloir acheter du {{$cryptoWallet->name}} ?")'>Acheter {{$cryptoWallet->name}} </button>

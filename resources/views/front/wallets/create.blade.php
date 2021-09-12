@@ -23,7 +23,14 @@
                     <input hidden type="checkbox" class="checkcryptocurrency" id="id_cryptocurrency-{{$cryptocurrency->id}}" name="id_cryptocurrency[]" value="{{$cryptocurrency->id}}">
                     <div class="card p-3 walletCryptocurrency">
                         <label for="id_cryptocurrency-{{$cryptocurrency->id}}" class="d-flex align-items-center">
-                            <img width="50" class="pr-2" src="/images/{{$cryptocurrency->image}}" alt="crypto logo">
+                        @if(file_exists(public_path('images/' . $cryptocurrency->image)))
+                        <td>      <img width="50" class="pr-2" src="/images/{{$cryptocurrency->image}}" alt="crypto logo"></td>
+                         @else
+
+                        <td>
+                        <img width="50" class="pr-2" src="{{asset('storage/images/'.$cryptocurrency->image) }}" alt="crypto logo">
+                        @endif
+                      
                             <p class="font-weight-bold m-0" style="font-size:18px;">{{$cryptocurrency->name}}</p>
                         </label>
                     

@@ -14,6 +14,10 @@ use App\Models\Admin\CryptoCurrency;
 
 class UserCryptocurrenciesWalletController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware(['customer']);
+    }
     /**
      * Display a listing of the resource.
      *
