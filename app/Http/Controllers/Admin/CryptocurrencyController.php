@@ -106,9 +106,10 @@ class CryptocurrencyController extends Controller
     public function saveCryptocurrency($crypto, $request){
         $crypto->name = $request->name;
         if(!empty($request->file('image'))){
-            $extension = $request->file('image')->extension();
             $crypto->image = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/images/', $request->file('image')->getClientOriginalName());
+        }else{
+            $crypto->image = 'no_image_found.png';
         }
     }
 

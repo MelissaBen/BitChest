@@ -69,7 +69,7 @@
                             @foreach($cryptoRanks as $key => $cryptoRank)
                                 <tr class="bg-white">
                                     <td width="60%">
-                                        <img class="mr-2" src="/images/{{$cryptoRank->image}}" alt="crypto logo">
+                                        <img width="32px" class="mr-2" src="/images/{{$cryptoRank->image}}" alt="crypto logo">
                                         <span class="mr-2" >{{$key + 1}}</span>
                                         <span class="mr-2" >{{$cryptoRank->name}}</span>
                                     </td>

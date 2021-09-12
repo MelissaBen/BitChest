@@ -2,9 +2,8 @@ Installation de Bitchest :
 
 Créez une base de données sur votre serveur par exemple : bitchest
 
-Copiez le fichier ".env.example" qui est à la racine du dossier et le renommer en ".env"
 
-Remplissez-le fichier ".env" en fonction de votre configuration :
+Modifier le fichier ".env" à la racine du projet en fonction de votre configuration :
 
 Dans la partie DB, saisissez les informations de connexion à votre base de données. <br>
 DB_DATABASE=nom de votre base de donnée <br>
