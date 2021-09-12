@@ -99,8 +99,7 @@
             @if(auth()->user() && auth()->user()->isAdmin())
                 <nav class="hidden position-fixed d-flex flex-column justify-content-between p-3 " id="sidebar">
                     <div id="toggleNav" class="justify-content-center align-items-center">
-                        </i><i class="fas fa-xs fa-angle-double-right"></i>
-
+                        <i class="fas fa-xs fa-angle-double-right"></i>
                     </div>
                     <div id="navTop">
                         <ul class="my-3 p-0">
@@ -123,13 +122,14 @@
                                 </li>
                             </a>
                         </ul>
-                    </div>
-                    <div id="navBottom" class="d-flex justify-content-between">
-                        <div class="sidebar-item align-items-center justify-content-end flex-grow-1" id="closeNav">
-                            <i class="fas fa-lg fa-times-circle"></i>
+                        <div class="sidebar-item align-items-center  justify-content-end flex-grow-1 mt-5" id="closeNav">
+                            <i class="fas fa-xs fa-angle-double-left"></i>
                             <span class="text-capitalize ml-2">Fermer</span>
-                        </div>
+                         </div>
                     </div>
+                   
+                  
+                   
                 </nav>
             @else
             @endif
