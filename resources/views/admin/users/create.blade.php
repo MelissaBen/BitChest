@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2 class="text-center m-3 text-white">Ajouter un utilisateur</h2>
+        <h2 class="text-center m-3 text-black">Ajouter un utilisateur</h2>
     </section>
     
     <section class="container error-message">

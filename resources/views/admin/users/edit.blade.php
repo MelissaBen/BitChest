@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2 class="text-center text-white m-3">Modifier {{$user->firstname}}</h2>
+        <h2 class="text-center text-black m-3">Modifier {{$user->firstname}} {{$user->lastname}}</h2>
     </section>
     
     <section class="container error-message">
@@ -36,9 +36,8 @@
             <div class="form-group">
                 {!! Form::label('role_id', "Rôle :") !!}
                 <select name="role_id" class="form-control">
-                    <option value="0"></option>
-                    @foreach($roles as $role)
-                    <option value="{{$role->id}}">{{$role->name}}</option>
+                    @foreach(array_reverse($roles) as $role)
+                        <option value="{{$role->id}}">{{$role->name}}</option>
                     @endforeach
                 </select>
             </div>

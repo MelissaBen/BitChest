@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="admin-header">
-        <h2 class="text-center m-3 text-white">Ajouter un rôle</h2>
+        <h2 class="text-center m-3 text-black">Ajouter un rôle</h2>
     </section>
     <section class="container error-message">
         @if(!empty($errors->first()))

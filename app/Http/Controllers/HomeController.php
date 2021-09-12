@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Admin\User;
 use App\Models\Cryptocurrency;
 use DB;
@@ -141,7 +143,7 @@ class HomeController extends Controller
         $user = DB::table('users')->find(auth()->user()->id);
         return view('front.account.edit')->with('user', $user);
     }
-    public function updateCustomerInfo(Request $request){
+    public function updateCustomerInfo(CustomerStoreRequest $request){
         $user = User::find(auth()->user()->id);
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;

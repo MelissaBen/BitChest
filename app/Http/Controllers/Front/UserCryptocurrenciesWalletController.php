@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Models\Front\UserCryptocurrenciesWallet;
 use App\Http\Controllers\Controller;  
 use Illuminate\Http\Request;
+
 use DB;
 use Session;
 use Carbon;

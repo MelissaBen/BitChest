@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserStoreRequest extends FormRequest
+class CustomerStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class UserStoreRequest extends FormRequest
         return [
             'firstname' => 'required|min:1',
             'lastname' => 'required|min:1',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|min:8',
         ];
     }
@@ -47,7 +47,6 @@ class UserStoreRequest extends FormRequest
             'email.email' => 'Veuillez rentrer un email valide !',
             'password.required' => 'Veuillez renseigner le mot de passe de l\'utilisateur !',
             'password.min' => 'La mot de passe doit comporter au minimum 8 caractères !',
-            'email.unique' => 'Cet email est déjà enregistré',
         ];
     }
 }

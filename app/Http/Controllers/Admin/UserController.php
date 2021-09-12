@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use DB;
 use Session;
 
@@ -52,6 +53,8 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $user = new User();
+        
+        $user->password = bcrypt($request->password);
         $this->saveUser($user, $request);
 
         // By default, user's role is customer
@@ -81,7 +84,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
            
-        $roles = DB::table('roles')->get();
+        $roles = DB::table('roles')->get()->toArray();
+      
         return view('admin.users.edit')->with('roles', $roles)->with('user', $user);
     }
 
@@ -92,7 +96,7 @@ class UserController extends Controller
      * @param  \App\Models\Cryptocurrency  $cryptocurrency
      * @return \Illuminate\Http\Response
      */
-    public function update(UserStoreRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
         Db::table('model_has_roles')->where('model_id', $id)->update(['role_id' => $request->role_id]);
@@ -123,6 +127,5 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->email = $request->email;
         $user->role_id = $request->role_id;
-        $user->password = bcrypt($request->password);
     }
 }
