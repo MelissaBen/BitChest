@@ -70,20 +70,28 @@ class UserCryptocurrenciesWalletController extends Controller
     public function store(Request $request)
     {
 
-        $wallet = new UserCryptocurrenciesWallet();
-        $this->saveWallet($wallet, $request);
+        foreach($request->id_cryptocurrency as $id_cryptocurrency){
+            $wallet = new UserCryptocurrenciesWallet(); 
+            $wallet->id_cryptocurrency = $id_cryptocurrency;
+            $wallet->total = 0;
+            $wallet->id_user = auth()->user()->id;
+             //Check if cryptocurrency's wallet chosen already exists
+            $walletExists = DB::table('user_cryptocurrencies_wallets')
+            ->where('id_cryptocurrency', $wallet->id_cryptocurrency)
+            ->where('id_user', auth()->user()->id)
+            ->get()->toArray();
 
-        //Check if cryptocurrency's wallet chosen already exists
-        $walletExists = DB::table('user_cryptocurrencies_wallets')
-        ->where('id_cryptocurrency', $wallet->id_cryptocurrency)
-        ->where('id_user', auth()->user()->id)
-        ->get()->toArray();
-
-        if(empty($walletExists)){
-            $wallet->save();
-        }else{
-            Session::put('error', 'Vous avez déjà un portefeuille pour cette cryptomonnaie !');
+            if(empty($walletExists)){
+                $wallet->save();
+            }else{
+                Session::put('error', 'Vous avez déjà un portefeuille pour cette cryptomonnaie !');
+            }
         }
+        
+
+        
+
+       
 
         return redirect('/wallets');
     }

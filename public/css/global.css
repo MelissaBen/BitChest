@@ -232,6 +232,12 @@ button.close{
 #valueForToday{
     font-size:34px;
 }
+.walletCryptocurrency, .walletCryptocurrency label {
+    cursor: pointer;
+}
+.checkcryptocurrency:checked + .walletCryptocurrency{
+    background:aliceblue;
+}
 /**
  * Responsive
  */
