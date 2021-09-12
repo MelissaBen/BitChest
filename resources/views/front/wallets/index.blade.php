@@ -82,7 +82,7 @@
                 <input type="number" step="any" class="form-control w-100 mx-auto my-4 text-center"  style="max-width:60%;" name="cryptoCashValueWanted"  placeholder="300.00"/>
             </div>
             <button type="submit" class="admin-delete mx-auto d-block btn btn-outline-primary m-2" 
-            onclick='return confirm("Êtes-vous sûr de vouloir supprimer ce portefeuille ?")'>Acheter {{$cryptoWallet->name}} </button>
+            onclick='return confirm("Êtes-vous sûr de vouloir acheter du {{$cryptoWallet->name}} ?")'>Acheter {{$cryptoWallet->name}} </button>
         </form>
       </div>
     </div>

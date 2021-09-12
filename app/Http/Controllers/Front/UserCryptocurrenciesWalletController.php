@@ -179,6 +179,7 @@ class UserCryptocurrenciesWalletController extends Controller
         /**
          * If form submitted, we check if user has enough to buy cryptocurrency
          */
+        
         if($request->cryptoCashValueWanted){
         
             if(floatval($userWallet->solde) - floatval($request->cryptoCashValueWanted) < 0){

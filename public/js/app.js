@@ -1853,49 +1853,57 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var uri = 'http://127.0.0.1:8000/cryptocurrenciesjson';
-    var cryptoRateName = document.getElementById('cryptoRateName');
-    var todayCrypto = document.getElementById('todayCrypto');
-    var yesterdayCrypto = document.getElementById('yesterdayCrypto');
-    var valueForToday = document.getElementById('valueForToday');
-    var icon = document.getElementById('icon');
-    var gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
-    gradient.addColorStop(0, 'rgba(61, 164, 118, 0.5)');
-    gradient.addColorStop(0.5, 'rgba(61, 164, 118, 0.25)');
-    gradient.addColorStop(1, 'rgba(61, 164, 118, 0)');
     this.axios.get(uri).then(function (response) {
-      var data = response.data;
-      valueForToday.parentNode.style.display = "inline-block";
-      valueForToday.parentNode.style.fontSize = "i28px";
+      var data = response.data; //Switch the icon color in terms of the difference between today and yesterday crypto's rate
+
+      _this.switchIcon(data['todayCrypto'], data['yesterdayCrypto'], 0); //First we create a chart with bitcoin's data in cryptocurrenciesRates's array at key 1
+
+
+      _this.createChart(data['days'], data['cryptocurrenciesRates'], 1);
       /**
-       * Check if we are not the first day in the month. There is no data for the last month 
-       * We change the icon color and the rate in terms of value's positivity
+       * We create a var "that" to stock this's instance and keep it for our eventlistener and update the chart
        */
 
-      if (yesterdayCrypto != null) {
-        if (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price < 0) {
-          icon.style.color = "#e86f63";
-          icon.style.transform = "rotate(180deg) scaleX(-1)";
-          valueForToday.parentNode.style.color = "#e86f63";
-          valueForToday.textContent = (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price).toFixed(2);
-        } else {
-          icon.style.color = "#43ca79";
-          icon.style.transform = "rotate(0deg) scaleX(1)";
-          valueForToday.parentNode.style.color = "#43ca79";
-          valueForToday.textContent = "+" + (data['todayCrypto'][0].price - data['yesterdayCrypto'][0].price).toFixed(2);
+
+      var that = _this;
+      document.getElementById('chartSwitcher').addEventListener('change', function () {
+        //we replace the cryptocurrency's logo
+        var cryptoLogo = document.getElementById('cryptoLogo');
+        cryptoLogo.setAttribute('src', "/images/" + data['crypto'][this.value].toLowerCase() + ".png"); //We replace the cryptocurrency's name
+
+        cryptoRateName.textContent = this.options[this.selectedIndex].text; //We replace yesterday and today's value
+
+        if (yesterdayCrypto != null) {
+          yesterdayCrypto.textContent = data['yesterdayCrypto'][this.value - 1].price;
         }
-      }
-      /**
-       * First, we create a chart with bitcoin's data
-       */
 
+        todayCrypto.textContent = data['todayCrypto'][this.value - 1].price;
+        that.switchIcon(data['todayCrypto'], data['yesterdayCrypto'], this.value - 1);
+        /**
+         * We update the chart by using our "that" variable
+         */
 
-      _this.renderChart({
-        labels: data['days'],
+        that.createChart(data['days'], data['cryptocurrenciesRates'], this.value);
+      });
+    });
+  },
+  methods: {
+    /**
+     * Chart creation 
+     */
+    createChart: function createChart(days, cryptocurrencyRates, key) {
+      //Creation of gradient color for area's background
+      var gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+      gradient.addColorStop(0, 'rgba(61, 164, 118, 0.5)');
+      gradient.addColorStop(0.5, 'rgba(61, 164, 118, 0.25)');
+      gradient.addColorStop(1, 'rgba(61, 164, 118, 0)');
+      this.renderChart({
+        labels: days,
         datasets: [{
           label: '€',
           borderColor: "#3DA476",
           backgroundColor: gradient,
-          data: data['cryptocurrenciesRates'][1],
+          data: cryptocurrencyRates[key],
           lineTension: 0
         }]
       }, {
@@ -1929,72 +1937,31 @@ __webpack_require__.r(__webpack_exports__);
             }
           }]
         }
-      }); //We create a var to stock this's instance and keep it for an evenlistener
-
-
-      var that = _this;
-      document.getElementById('chartSwitcher').addEventListener('change', function () {
-        //we replace the cryptocurrency's logo
-        var cryptoLogo = document.getElementById('cryptoLogo');
-        cryptoLogo.setAttribute('src', "/images/" + data['crypto'][this.value].toLowerCase() + ".png"); //We replace the cryptocurrency's name
-
-        cryptoRateName.textContent = this.options[this.selectedIndex].text; //We replace yesterday and today's value
-
-        if (yesterdayCrypto != null) {
-          yesterdayCrypto.textContent = data['yesterdayCrypto'][this.value - 1].price;
-        }
-
-        todayCrypto.textContent = data['todayCrypto'][this.value - 1].price;
-        /**
-         * Check if we are not the first day in the month. There is no data for the last month 
-         * We change the icon color and the rate in terms of value's positivity
-         */
-
-        if (yesterdayCrypto != null) {
-          if (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price < 0) {
-            icon.style.color = "#e86f63";
-            icon.style.transform = "rotate(180deg) scaleX(-1)";
-            valueForToday.parentNode.style.color = "#e86f63";
-            valueForToday.textContent = (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price).toFixed(2);
-          } else {
-            icon.style.color = "#43ca79";
-            icon.style.transform = "rotate(0deg) scaleX(1)";
-            valueForToday.parentNode.style.color = "#43ca79";
-            valueForToday.textContent = "+" + (data['todayCrypto'][this.value - 1].price - data['yesterdayCrypto'][this.value - 1].price).toFixed(2);
-          }
-        }
-        /**
-         * We update the chart by using our that variable
-         */
-
-
-        that.renderChart({
-          labels: data['days'],
-          datasets: [{
-            label: '€',
-            borderColor: '#41B883',
-            backgroundColor: gradient,
-            data: data['cryptocurrenciesRates'][this.value],
-            lineTension: 0
-          }]
-        }, {
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: false,
-          scales: {
-            yAxes: [{
-              display: true,
-              ticks: {
-                beginAtZero: true,
-                min: 800,
-                max: 1400,
-                stepSize: 100
-              }
-            }]
-          }
-        });
       });
-    });
+    },
+
+    /**
+    * Check if we are not the first day in the month. There is no data for the last month 
+    * We change the icon color and the rate in terms of value's positivity
+    */
+    switchIcon: function switchIcon(todayCrypto, yesterdayCrypto, key) {
+      var valueForToday = document.getElementById('valueForToday');
+      var icon = document.getElementById('icon');
+
+      if (yesterdayCrypto != null) {
+        if (todayCrypto[key].price - yesterdayCrypto[key].price < 0) {
+          icon.style.color = "#e86f63";
+          icon.style.transform = "rotate(180deg) scaleX(-1)";
+          valueForToday.parentNode.style.color = "#e86f63";
+          valueForToday.textContent = (todayCrypto[key].price - yesterdayCrypto[key].price).toFixed(2);
+        } else {
+          icon.style.color = "#43ca79";
+          icon.style.transform = "rotate(0deg) scaleX(1)";
+          valueForToday.parentNode.style.color = "#43ca79";
+          valueForToday.textContent = "+" + (todayCrypto[key].price - yesterdayCrypto[key].price).toFixed(2);
+        }
+      }
+    }
   }
 });
 
