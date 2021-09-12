@@ -1,3 +1,26 @@
+Installation de Bitchest :
+
+Créez une base de données sur votre serveur par exemple : bitchest
+
+Copiez le fichier ".env.example" qui est à la racine du dossier et le renommer en ".env"
+
+Remplissez-le fichier ".env" en fonction de votre configuration :
+
+Dans la partie DB, saisissez les informations de connexion à votre base de données. <br>
+DB_DATABASE=nom de votre base de donnée <br>
+DB_USERNAME=root par défaut <br>
+DB_PASSWORD=votre mot de passe<br>
+
+------------------------------------------------------------- 
+
+Saisir la commande "composer update" <br>
+Saisir la commande "php artisan storage:link"  <br>
+Saisir la commande "php artisan migrate:fresh --seed" pour effectuer les migrations et peupler de data la Base de données. <br>
+Saisir la commande "php artisan serve" <br>
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
