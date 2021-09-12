@@ -19,11 +19,12 @@
                 {{Session::get('error')}}
             </div>
             {{Session::put('error', null)}}
+
         @elseif(Session::has('success'))
           <div class="alert alert-success">
                 {{Session::get('success')}}
-            </div>
-            {{Session::put('success', null)}}
+          </div>
+          {{Session::put('success', null)}}
         @endif
 </section>
   

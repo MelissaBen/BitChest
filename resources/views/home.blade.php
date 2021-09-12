@@ -22,6 +22,7 @@
                             </p>
                         </div>
                     </div>
+                        
                 </div>
 
                 <div class="col-md-6 col-sm-12 col-xs-12 d-flex justify-content-md-end justify-content-sm-start text-right">
@@ -35,6 +36,18 @@
                     </form>   
                 
                 </div>
+             <div class="mt-3">
+                @if(!empty($yesterdayCrypto))
+                    <div class="d-flex align-items-center pl-4 mr-4">
+                        <p class="m-0 cryptorecentrate" >Valeur d'hier :  <span id="yesterdayCrypto" >{{$yesterdayCrypto[0]->price}}</span> €</p>
+                    </div>
+                @endif
+                <div class=" d-flex align-items-center ml-4 ">
+                    <p class="m-0 cryptorecentrate" >Valeur pour aujourd'hui : <span id="todayCrypto" >{{$crypto[0]->price}}</span> €</p>
+                </div>
+             </div>
+                            
+                            
             </section>
         
             <section>
@@ -43,7 +56,7 @@
         </section>
 
         <section class="row mx-4 mt-4">
-            <div class="col-md-7 pl-0">
+            <div class="col-md-12 pl-0">
                 <div class="card rounded p-4">
                     <table class=" cryptoRanks col-12 table table-hover table-responsive w-100">
                         <caption>Prix aujourd'hui</caption>
@@ -74,24 +87,7 @@
                 </div>
             </div>
             
-            <div class="col-md-5" >
-                <div class="row">
-                    <div class="col-md-12 pr-0 ">
-                        <div class="card mtl p-4 rounded"> 
-                            <p class="p-0" style="font-size:32px;font-weight:bold;">Détails</p>
-                            <div class=" d-flex align-items-center ">
-                                <p class="m-0 cryptorecentrate" >Valeur d'ajourd'hui : <span id="todayCrypto" >{{$crypto[0]->price}}</span> €</p>
-                            </div>
-                            
-                            @if(!empty($yesterdayCrypto))
-                            <div class="d-flex align-items-center">
-                                <p class="m-0 cryptorecentrate" >Valeur d'hier :  <span id="yesterdayCrypto" >{{$yesterdayCrypto[0]->price}}</span> €</p>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>  
+  
         </section>
     </div>
     
